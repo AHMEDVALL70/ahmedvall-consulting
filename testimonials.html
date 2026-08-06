@@ -6,159 +6,7 @@
     <title>آراء العملاء | استشارات الذكاء الاصطناعي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1a56db;
-            --primary-light: #3b82f6;
-            --primary-dark: #1e3a8a;
-            --bg: #f0f4ff;
-            --card: #ffffff;
-            --text: #0f172a;
-            --muted: #64748b;
-            --border: #dbeafe;
-            --shadow: 0 8px 30px rgba(26, 86, 219, 0.12);
-            --radius: 20px;
-            --header-h: 70px;
-            --warning: #f59e0b;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 2px solid var(--border);
-            height: var(--header-h);
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo i { font-size: 1.3rem; }
-
-        .back-home {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-        .back-home:hover {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        .page-content {
-            flex: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 48px 24px 64px;
-            width: 100%;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--text);
-        }
-        .page-header h1 span { color: var(--primary); }
-        .page-header p {
-            color: var(--muted);
-            font-size: 1.1rem;
-            margin-top: 8px;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background: var(--card);
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px 24px;
-            transition: all 0.3s ease;
-        }
-        .testimonial-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
-            transform: translateY(-4px);
-        }
-        .testimonial-card .stars {
-            font-size: 1.2rem;
-            color: var(--warning);
-            margin-bottom: 12px;
-        }
-        .testimonial-card .text {
-            color: var(--text);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-        .testimonial-card .author {
-            font-weight: 800;
-            font-size: 1rem;
-        }
-        .testimonial-card .role {
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-
-        footer {
-            background: var(--card);
-            border-top: 2px solid var(--border);
-            padding: 20px 24px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .page-content { padding: 24px 16px 40px; }
-            .page-header h1 { font-size: 1.8rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -166,68 +14,89 @@
         <nav class="nav-container">
             <a href="index.html" class="logo">
                 <i class="fa-solid fa-brain"></i>
-                <span>استشارات الذكاء الاصطناعي</span>
+                <span id="logo-text">استشارات الذكاء الاصطناعي</span>
             </a>
-            <a href="index.html" class="back-home">
-                <i class="fa-solid fa-arrow-right"></i> العودة للرئيسية
-            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="services.html"><i class="fa-solid fa-cogs"></i> <span id="nav-services">الخدمات</span></a></li>
+                <li><a href="projects.html"><i class="fa-solid fa-folder-open"></i> <span id="nav-projects">مشاريع سابقة</span></a></li>
+                <li><a href="testimonials.html"><i class="fa-solid fa-comment"></i> <span id="nav-testimonials">آراء العملاء</span></a></li>
+                <li><a href="about.html"><i class="fa-solid fa-user-tie"></i> <span id="nav-about">عن الاستشاري</span></a></li>
+                <li><a href="contact.html" class="contact-link"><i class="fa-solid fa-phone"></i> <span id="nav-contact">اتصل بنا</span></a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="lang-btn active" data-lang="ar" id="langAr">عربي</button>
+                <button class="lang-btn" data-lang="en" id="langEn">EN</button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </nav>
     </header>
 
     <main class="page-content">
         <div class="page-header">
-            <h1>⭐ <span>آراء العملاء</span></h1>
+            <h1 id="testimonials-title">⭐ <span>آراء العملاء</span></h1>
             <p>ما يقوله عملاؤنا عن خدماتنا</p>
         </div>
 
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="text">"استشاراتنا ساعدتنا كثيراً في تطويرنا الاستراتيجي والتقني."</p>
-                <p class="author">محمد الكواري</p>
-                <p class="role">CTO، شركة تقنية</p>
+                <p class="text" id="test-text1">"استشاراتنا ساعدتنا كثيراً في تطويرنا الاستراتيجي والتقني."</p>
+                <p class="author" id="test-auth1">محمد الكواري</p>
+                <p class="role" id="test-role1">CTO، شركة تقنية</p>
             </div>
 
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="text">"خبرتهم العميقة أضافت قيمة حقيقية لمشروعنا."</p>
-                <p class="author">خالد محمود</p>
-                <p class="role">مدير المشاريع</p>
+                <p class="text" id="test-text2">"خبرتهم العميقة أضافت قيمة حقيقية لمشروعنا."</p>
+                <p class="author" id="test-auth2">خالد محمود</p>
+                <p class="role" id="test-role2">مدير المشاريع</p>
             </div>
 
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="text">"فريق احترافي وموثوق جداً."</p>
-                <p class="author">علي البحراني</p>
-                <p class="role">مدير الفريق التقني</p>
+                <p class="text" id="test-text3">"فريق احترافي وموثوق جداً."</p>
+                <p class="author" id="test-auth3">علي البحراني</p>
+                <p class="role" id="test-role3">مدير الفريق التقني</p>
             </div>
 
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="text">"ساعدونا في تحقيق أهدافنا الرقمية بسرعة وكفاءة."</p>
-                <p class="author">نورة السبيعي</p>
-                <p class="role">مديرة التحول الرقمي</p>
+                <p class="text" id="test-text4">"ساعدونا في تحقيق أهدافنا الرقمية بسرعة وكفاءة."</p>
+                <p class="author" id="test-auth4">نورة السبيعي</p>
+                <p class="role" id="test-role4">مديرة التحول الرقمي</p>
             </div>
 
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="text">"حلولهم المبتكرة غيرت طريقة عملنا بالكامل."</p>
-                <p class="author">فهد المنصوري</p>
-                <p class="role">رئيس قسم التقنية</p>
+                <p class="text" id="test-text5">"حلولهم المبتكرة غيرت طريقة عملنا بالكامل."</p>
+                <p class="author" id="test-auth5">فهد المنصوري</p>
+                <p class="role" id="test-role5">رئيس قسم التقنية</p>
             </div>
 
             <div class="testimonial-card">
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="text">"التزامهم بالجودة والدقة كان مذهلاً."</p>
-                <p class="author">سارة العمادي</p>
-                <p class="role">مديرة العمليات</p>
+                <p class="text" id="test-text6">"التزامهم بالجودة والدقة كان مذهلاً."</p>
+                <p class="author" id="test-auth6">سارة العمادي</p>
+                <p class="role" id="test-role6">مديرة العمليات</p>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
+        <p id="copyright-txt">© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('open'); });
+        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('open'); }); });
+    </script>
+    <script src="js/translations.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>
