@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريع سابقة | استشارات الذكاء الاصطناعي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --bg: #f0f4ff;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #dbeafe;
+            --shadow: 0 8px 30px rgba(26, 86, 219, 0.12);
+            --radius: 20px;
+            --header-h: 70px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--border);
+            height: var(--header-h);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i { font-size: 1.3rem; }
+
+        .back-home {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .back-home:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .page-content {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+            width: 100%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text);
+        }
+        .page-header h1 span { color: var(--primary); }
+        .page-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+            transform: translateY(-6px);
+        }
+        .project-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .project-card .tag {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .project-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        footer {
+            background: var(--card);
+            border-top: 2px solid var(--border);
+            padding: 20px 24px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-content { padding: 24px 16px 40px; }
+            .page-header h1 { font-size: 1.8rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <span>استشارات الذكاء الاصطناعي</span>
+            </a>
+            <a href="index.html" class="back-home">
+                <i class="fa-solid fa-arrow-right"></i> العودة للرئيسية
+            </a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <div class="page-header">
+            <h1>📂 <span>مشاريع سابقة</span></h1>
+            <p>نماذج من مشاريعنا في مجالات الذكاء الاصطناعي والتعلم الآلي</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="icon">🏠</div>
+                <span class="tag">ذكاء اصطناعي وعقارات</span>
+                <h3>منصة التنبؤ بأسعار العقارات في قطر</h3>
+                <p>نموذج تعلم آلي متقدم للتنبؤ بأسعار العقارات في قطر</p>
+            </div>
+
+            <div class="project-card">
+                <div class="icon">📄</div>
+                <span class="tag">معالجة النصوص</span>
+                <h3>محسّن السيرة الذاتية ATS</h3>
+                <p>تحسين توافق السيرة الذاتية مع متطلبات أنظمة ATS باستخدام TF-IDF</p>
+            </div>
+
+            <div class="project-card">
+                <div class="icon">🛂</div>
+                <span class="tag">كشف الشذوذ</span>
+                <h3>كشف الاحتيال في الصفقات العمومية</h3>
+                <p>نموذج متخصص للكشف عن الأنماط المشبوهة في الصفقات</p>
+            </div>
+
+            <div class="project-card">
+                <div class="icon">🩺</div>
+                <span class="tag">التنبؤ الطبي</span>
+                <h3>نموذج التنبؤ بالسكري</h3>
+                <p>تحليل بيانات طبية للتنبؤ المبكر بمرض السكري</p>
+            </div>
+
+            <div class="project-card">
+                <div class="icon">💬</div>
+                <span class="tag">معالجة اللغة الطبيعية</span>
+                <h3>تحليل المشاعر (NLP)</h3>
+                <p>تحليل المشاعر في النصوص العربية والإنجليزية</p>
+            </div>
+
+            <div class="project-card">
+                <div class="icon">📊</div>
+                <span class="tag">التنبؤ المالي</span>
+                <h3>التنبؤ بأسعار العملات الرقمية</h3>
+                <p>نموذج لتوقع أسعار العملات الرقمية باستخدام التعلم العميق</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+</html>
