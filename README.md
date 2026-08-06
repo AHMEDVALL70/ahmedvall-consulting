@@ -1,1 +1,0 @@
-# ahmedvall-consulting
