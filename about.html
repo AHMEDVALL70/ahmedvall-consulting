@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن الاستشاري | استشارات الذكاء الاصطناعي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --bg: #f0f4ff;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #dbeafe;
+            --shadow: 0 8px 30px rgba(26, 86, 219, 0.12);
+            --radius: 20px;
+            --header-h: 70px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--border);
+            height: var(--header-h);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i { font-size: 1.3rem; }
+
+        .back-home {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+        .back-home:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .page-content {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 64px;
+            width: 100%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text);
+        }
+        .page-header h1 span { color: var(--primary); }
+
+        .about-card {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        .about-card .avatar {
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .about-card h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .about-card .subtitle {
+            text-align: center;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .about-card p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .about-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .about-list li {
+            padding: 10px 0;
+            padding-inline-start: 32px;
+            position: relative;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+        .about-list li::before {
+            content: "✓";
+            position: absolute;
+            inset-inline-start: 0;
+            color: var(--primary);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+        .stats-row .stat {
+            text-align: center;
+        }
+        .stats-row .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        .stats-row .stat-label {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .about-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .about-actions a {
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .about-actions .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .about-actions .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(26, 86, 219, 0.3);
+        }
+        .about-actions .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .about-actions .btn-secondary:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        footer {
+            background: var(--card);
+            border-top: 2px solid var(--border);
+            padding: 20px 24px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-content { padding: 24px 16px 40px; }
+            .page-header h1 { font-size: 1.8rem; }
+            .about-card { padding: 24px; }
+            .stats-row { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <span>استشارات الذكاء الاصطناعي</span>
+            </a>
+            <a href="index.html" class="back-home">
+                <i class="fa-solid fa-arrow-right"></i> العودة للرئيسية
+            </a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <div class="page-header">
+            <h1>👤 <span>عن الاستشاري</span></h1>
+        </div>
+
+        <div class="about-card">
+            <div class="avatar">💼</div>
+            <h2>م. أحمد فال جمال الدين</h2>
+            <p class="subtitle">مهندس دولة | متخصص في الذكاء الاصطناعي والتعلم الآلي</p>
+
+            <p>
+                مهندس دولة (BAC+5) ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة
+                في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً
+                في مجال الذكاء الاصطناعي.
+            </p>
+
+            <p>
+                يعمل حالياً في قطر كمشرف إداري ومطور بايثون وذكاء اصطناعي مستقل.
+                مقيم في الدوحة، قطر.
+            </p>
+
+            <ul class="about-list">
+                <li>خبرة متقدمة في الذكاء الاصطناعي والتعلم الآلي</li>
+                <li>تطوير نماذج تنبؤية متكاملة</li>
+                <li>حلول تقنية مخصصة للمؤسسات</li>
+                <li>الأنظمة البيومترية والوثائق المؤمنة</li>
+                <li>شبكات Cisco والأمن السيبراني</li>
+            </ul>
+
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-number">13+</div>
+                    <div class="stat-label">مشروعاً منشوراً</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">سنة خبرة</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">مناصب قيادية</div>
+                </div>
+            </div>
+
+            <div class="about-actions">
+                <a href="https://github.com/AHMEDVALL70" target="_blank" class="btn-primary">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="Ahmed-Vall-CV-AR.pdf" download class="btn-secondary">
+                    <i class="fa-solid fa-download"></i> تحميل السيرة الذاتية
+                </a>
+                <a href="contact.html" class="btn-primary" style="background: var(--primary-dark);">
+                    <i class="fa-solid fa-envelope"></i> تواصل معي
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
+    </footer>
+
+</body>
+</html>
