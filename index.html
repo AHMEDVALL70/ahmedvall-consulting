@@ -3,116 +3,995 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استشارات الذكاء الاصطناعي | م. أحمد فال</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <meta name="description" content="InnoVision - استشارات الذكاء الاصطناعي والتحول الرقمي">
+    <title id="page-title">InnoVision | ابتكار للدراسات والتحول الرقمي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #f8fafc; --card-bg: #ffffff; --text-main: #0f172a; --text-muted: #64748b;
+            --primary: #2563eb; --primary-hover: #1d4ed8; --border-color: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.08), 0 8px 10px -6px rgba(37, 99, 235, 0.04);
+            --modal-overlay: rgba(15, 23, 42, 0.6);
+            --warning: #f59e0b;
+        }
+        [data-theme="dark"] {
+            --bg-color: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8;
+            --primary: #3b82f6; --primary-hover: #60a5fa; --border-color: #334155;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); --modal-overlay: rgba(0, 0, 0, 0.8);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
+        body { font-family: 'Cairo', 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+        header { position: sticky; top: 0; background-color: var(--card-bg); border-bottom: 1px solid var(--border-color); z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 75px; }
+        .logo { font-weight: 800; font-size: 1.25rem; color: var(--primary); display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .logo img { height: 40px; width: auto; border-radius: 8px; }
+        .nav-links { display: flex; gap: 10px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; padding: 8px 14px; border-radius: 10px; cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); background-color: rgba(37, 99, 235, 0.08); }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .btn-icon { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 16px; border-radius: 12px; cursor: pointer; font-family: inherit; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .btn-icon:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+        .menu-toggle { display: none; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); width: 40px; height: 40px; border-radius: 12px; cursor: pointer; align-items: center; justify-content: center; font-size: 1.1rem; }
+        main { flex-grow: 1; padding: 40px 0; }
+        .page-view { display: none; }
+        .page-view.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .hero { position: relative; padding: 90px 20px; text-align: center; border-radius: 28px; background: var(--card-bg); border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-top: 10px; }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 99, 235, 0.1); color: var(--primary); border: 1px solid rgba(37, 99, 235, 0.25); padding: 8px 22px; border-radius: 30px; font-size: 0.95rem; font-weight: 700; margin-bottom: 25px; }
+        .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; line-height: 1.25; }
+        .hero p { color: var(--text-muted); font-size: 1.2rem; max-width: 720px; margin: 0 auto 35px auto; font-weight: 500; }
+        .hero-actions { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 50px; }
+        .hero-btn-main { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; padding: 15px 38px; border-radius: 35px; font-size: 1rem; font-weight: 700; cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35); display: inline-flex; align-items: center; gap: 10px; }
+        .hero-btn-main:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.45); }
+        .hero-btn-sec { background-color: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 15px 32px; border-radius: 35px; font-size: 1rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .hero-btn-sec:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-4px); }
+        .hero-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        .feature-box { background: rgba(255, 255, 255, 0.7); border: 1px solid var(--border-color); border-radius: 20px; padding: 25px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
+        [data-theme="dark"] .feature-box { background: rgba(30, 41, 59, 0.7); }
+        .feature-box:hover { transform: translateY(-6px); border-color: var(--primary); }
+        .feature-box i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; display: inline-block; padding: 12px; background: rgba(37, 99, 235, 0.08); border-radius: 14px; }
+        .section-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 45px; text-align: center; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-hover)); margin: 12px auto 0; border-radius: 4px; }
+        .section-subtitle { text-align: center; color: var(--text-muted); font-size: 1.05rem; margin-top: -30px; margin-bottom: 40px; font-weight: 500; }
+        .services-grid, .projects-grid, .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card, .project-card, .testimonial-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 35px; box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: space-between; }
+        .service-card:hover, .project-card:hover, .testimonial-card:hover { transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15); }
+        .srv-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 22px; display: inline-block; padding: 15px; background: rgba(37, 99, 235, 0.08); border-radius: 16px; }
+        .srv-title, .project-title { font-size: 1.35rem; margin-bottom: 12px; font-weight: 800; }
+        .srv-desc, .project-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px; }
+        .book-btn { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; padding: 14px 22px; border-radius: 12px; cursor: pointer; font-family: inherit; font-weight: 700; width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25); }
+        .book-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4); }
+        .project-tag { display: inline-block; background: rgba(37, 99, 235, 0.1); color: var(--primary); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; margin-bottom: 18px; width: fit-content; }
+        .project-techs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+        .tech-badge { background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; }
+        .project-link { color: var(--primary); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+        .project-link:hover { text-decoration: underline; }
+        .testimonial-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 15px; display: flex; gap: 4px; }
+        .testimonial-card p { font-style: italic; color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .author-info h4 { font-size: 1.05rem; font-weight: 700; }
+        .author-info span { font-size: 0.85rem; color: var(--text-muted); }
+        .about-box { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 45px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: center; box-shadow: var(--shadow); }
+        @media (max-width: 768px) { .about-box { grid-template-columns: 1fr; } .hero h1 { font-size: 2.2rem; } }
+        .about-subtitle { color: var(--primary); font-weight: 700; margin-bottom: 18px; font-size: 1.05rem; }
+        .about-box > div > p.about-text { color: var(--text-muted); margin-bottom: 14px; font-size: 1rem; line-height: 1.9; }
+        .about-list { list-style: none; margin: 20px 0; }
+        .about-list li { margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+        .about-list i { color: var(--primary); background: rgba(37, 99, 235, 0.1); padding: 6px; border-radius: 50%; font-size: 0.8rem; }
+        .about-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
+        .btn-secondary { border: 1px solid var(--border-color); background-color: var(--card-bg); color: var(--text-main); padding: 12px 22px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+        .btn-secondary:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+        .stats-container { display: flex; flex-direction: column; gap: 20px; background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 30px; border-radius: 18px; text-align: center; }
+        .stat-num { font-size: 2.5rem; font-weight: 900; color: var(--primary); }
+        .stat-lbl { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+        .contact-container { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 60px 30px; text-align: center; box-shadow: var(--shadow); max-width: 800px; margin: 0 auto; }
+        .social-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; margin: 35px 0; }
+        .social-icon { width: 60px; height: 60px; border-radius: 50%; background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-main); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; box-shadow: 0 6px 15px rgba(0,0,0,0.03); cursor: pointer; }
+        .social-icon:hover { transform: translateY(-6px) scale(1.05); color: white; background-color: var(--primary); border-color: var(--primary); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35); }
+        .contact-details { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        .contact-card { background-color: var(--bg-color); border: 1px solid var(--border-color); padding: 16px 28px; border-radius: 14px; display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem; cursor: pointer; }
+        .contact-card:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+        .contact-form-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 45px; box-shadow: var(--shadow); max-width: 640px; margin: 40px auto 0; }
+        .contact-form-card h3 { text-align: center; font-size: 1.3rem; font-weight: 800; margin-bottom: 28px; }
+        footer { background-color: var(--card-bg); border-top: 1px solid var(--border-color); padding: 25px 0; text-align: center; margin-top: auto; }
+        .copyright { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--modal-overlay); z-index: 1000; justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
+        .modal.active { display: flex; }
+        .modal-content { background-color: var(--card-bg); border-radius: 24px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; padding: 30px 40px; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35); border: 1px solid var(--border-color); animation: modalPop 0.4s ease; margin: auto; }
+        @keyframes modalPop { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .close-btn { position: absolute; top: 22px; left: 22px; background: var(--bg-color); border: 1px solid var(--border-color); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--text-muted); cursor: pointer; }
+        .close-btn:hover { color: var(--primary); border-color: var(--primary); }
+        [dir="ltr"] .close-btn { left: auto; right: 22px; }
+        .form-group { margin-bottom: 16px; text-align: right; }
+        [dir="ltr"] .form-group { text-align: left; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border-color); border-radius: 12px; background-color: var(--bg-color); color: var(--text-main); font-family: inherit; font-size: 0.95rem; }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+        .phone-input-group { display: flex; gap: 10px; direction: ltr; }
+        .phone-input-group select { width: 45%; cursor: pointer; }
+        .phone-input-group input { width: 55%; }
+        .alert-success { background-color: #dcfce7; color: #15803d; padding: 12px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem; display: none; font-weight: 600; border: 1px solid #bbf7d0; }
+        .alert-success.show { display: block; }
+        .alert-error { background-color: #fee2e2; color: #b91c1c; padding: 12px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem; display: none; font-weight: 600; border: 1px solid #fecaca; }
+        .alert-error.show { display: block; }
+        .chat-widget-btn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; padding: 14px 24px; border-radius: 35px; border: none; cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); display: flex; align-items: center; gap: 10px; font-weight: 700; z-index: 999; }
+        .chat-widget-btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 15px 30px rgba(37, 99, 235, 0.5); }
+        [dir="ltr"] .chat-widget-btn { right: auto; left: 30px; }
+        .chat-box { position: fixed; bottom: 95px; right: 30px; width: 350px; height: 460px; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.25); display: none; flex-direction: column; z-index: 999; overflow: hidden; }
+        [dir="ltr"] .chat-box { right: auto; left: 30px; }
+        .chat-box.active { display: flex; }
+        .chat-header { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1rem; }
+        .chat-header .close-chat { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
+        .chat-body { flex-grow: 1; padding: 18px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .chat-msg { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.9rem; line-height: 1.5; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .chat-msg.bot { background-color: var(--bg-color); border: 1px solid var(--border-color); align-self: flex-start; }
+        .chat-msg.user { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; align-self: flex-end; }
+        .chat-footer { padding: 12px; border-top: 1px solid var(--border-color); display: flex; gap: 8px; background: var(--card-bg); }
+        .chat-footer input { flex-grow: 1; padding: 10px 16px; border: 1px solid var(--border-color); border-radius: 25px; background-color: var(--bg-color); color: var(--text-main); font-size: 0.9rem; outline: none; }
+        .chat-footer input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15); }
+        .chat-footer button { background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .chat-footer button:hover { transform: scale(1.05); }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; position: absolute; top: 75px; right: 0; left: 0; background: var(--card-bg); border-bottom: 1px solid var(--border-color); flex-direction: column; padding: 10px 20px; gap: 4px; box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
+            .nav-links.open { display: flex; }
+            .nav-links a { width: 100%; }
+            .menu-toggle { display: flex; }
+            .nav-actions .btn-icon span { display: none; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 60px 16px; }
+            .hero-btn-main, .hero-btn-sec { width: 100%; justify-content: center; }
+            .hero-actions { flex-direction: column; }
+            .chat-box { width: calc(100vw - 32px); right: 16px; }
+            [dir="ltr"] .chat-box { left: 16px; }
+        }
+    </style>
 </head>
 <body>
-
     <header>
-        <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-brain"></i>
-                <span id="logo-text">استشارات الذكاء الاصطناعي</span>
-            </a>
-
+        <div class="container nav-container">
+            <div class="logo" onclick="switchPage('home')">
+                <img src="logo.png" alt="InnoVision Logo" onerror="this.style.display='none'">
+                <span id="logo-text">InnoVision</span>
+            </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="services.html"><i class="fa-solid fa-cogs"></i> <span id="nav-services">الخدمات</span></a></li>
-                <li><a href="projects.html"><i class="fa-solid fa-folder-open"></i> <span id="nav-projects">مشاريع سابقة</span></a></li>
-                <li><a href="testimonials.html"><i class="fa-solid fa-comment"></i> <span id="nav-testimonials">آراء العملاء</span></a></li>
-                <li><a href="about.html"><i class="fa-solid fa-user-tie"></i> <span id="nav-about">عن الاستشاري</span></a></li>
-                <li><a href="contact.html" class="contact-link"><i class="fa-solid fa-phone"></i> <span id="nav-contact">اتصل بنا</span></a></li>
+                <li><a onclick="switchPage('services')" id="nav-services">الخدمات</a></li>
+                <li><a onclick="switchPage('projects')" id="nav-projects">مشاريع سابقة</a></li>
+                <li><a onclick="switchPage('testimonials')" id="nav-testimonials">آراء العملاء</a></li>
+                <li><a onclick="switchPage('about')" id="nav-about">عن الاستشاري</a></li>
+                <li><a onclick="switchPage('contact')" id="nav-contact">اتصل بنا</a></li>
             </ul>
-
             <div class="nav-actions">
-                <button class="lang-btn active" data-lang="ar" id="langAr">عربي</button>
-                <button class="lang-btn" data-lang="en" id="langEn">EN</button>
-                <button class="menu-toggle" id="menuToggle">
+                <button class="btn-icon" id="theme-toggle" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon"></i>
+                    <span id="theme-text">الوضع الداكن</span>
+                </button>
+                <button class="btn-icon" id="lang-toggle" onclick="toggleLanguage()">
+                    <i class="fa-solid fa-globe"></i> <span>English</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge" id="hero-badge">🚀 الابتكار والتحول الرقمي</div>
+    <main class="container">
+        <!-- Home Page -->
+        <div id="page-home" class="page-view active">
+            <section class="hero">
+                <div class="hero-content">
+                    <span class="hero-badge">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> <span id="hero-badge">الابتكار والتحول الرقمي</span>
+                    </span>
+                    <h1 id="hero-title">ارتقِ بأعمالك باستخدام الذكاء الاصطناعي</h1>
+                    <p id="hero-subtitle">نقدم استشارات تخصصية وحلولاً برمجية متطورة في مجالات الذكاء الاصطناعي، التعلم الآلي، والأنظمة البيومترية</p>
 
-            <h1 id="hero-title">
-                ارتقِ بأعمالك باستخدام<br>
-                <span>الذكاء الاصطناعي</span>
-            </h1>
+                    <div class="hero-actions">
+                        <button class="hero-btn-main" onclick="switchPage('services')">
+                            <span id="btn-explore-services">استكشف الخدمات</span>
+                            <i class="fa-solid fa-arrow-left" id="hero-arrow-icon"></i>
+                        </button>
+                        <button class="hero-btn-sec" onclick="switchPage('contact')">
+                            <i class="fa-regular fa-paper-plane"></i>
+                            <span id="btn-direct-contact">تواصل معنا مباشر</span>
+                        </button>
+                    </div>
 
-            <p id="hero-subtitle">
-                نقدم استشارات تخصصية وحلولاً برمجية متطورة في مجالات الذكاء الاصطناعي،
-                التعلم الآلي، والأنظمة البيومترية.
-            </p>
+                    <div class="hero-features">
+                        <div class="feature-box" onclick="switchPage('services')">
+                            <i class="fa-solid fa-rocket"></i>
+                            <h4 id="feat-h1">حلول تخصصية</h4>
+                            <p id="feat-p1">نماذج ذكاء اصطناعي مصممة خصيصاً</p>
+                        </div>
+                        <div class="feature-box" onclick="switchPage('projects')">
+                            <i class="fa-solid fa-chart-diagram"></i>
+                            <h4 id="feat-h2">13+ مشروعاً</h4>
+                            <p id="feat-p2">حلول متقدمة وفعالة</p>
+                        </div>
+                        <div class="feature-box" onclick="switchPage('about')">
+                            <i class="fa-solid fa-award"></i>
+                            <h4 id="feat-h3">25+ سنة خبرة</h4>
+                            <p id="feat-p3">قيادة هندسية موثوقة</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-            <div class="hero-buttons">
-                <a href="services.html" class="btn-primary" id="btn-explore-services">
-                    <i class="fa-solid fa-arrow-left" id="hero-arrow-icon"></i> استكشف الخدمات
-                </a>
-                <a href="contact.html" class="btn-secondary" id="btn-direct-contact">
-                    <i class="fa-solid fa-envelope"></i> تواصل معنا مباشر
-                </a>
+        <!-- Services Page -->
+        <div id="page-services" class="page-view">
+            <h2 class="section-title" id="services-title">خدمات الاستشارات</h2>
+            <p class="section-subtitle" id="services-subtitle">مجموعة متكاملة من الخدمات الاستشارية والتقنية</p>
+            <div class="services-grid" id="servicesGrid">
+                <!-- تُبنى بواسطة JavaScript من مصفوفة الترجمات -->
             </div>
+        </div>
 
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">13+</div>
-                    <div class="stat-label" id="stat-proj">مشروعاً متكاملاً</div>
+        <!-- Projects Page -->
+        <div id="page-projects" class="page-view">
+            <h2 class="section-title" id="projects-title">مشاريع سابقة (Case Studies)</h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- تُبنى بواسطة JavaScript من مصفوفة الترجمات -->
+            </div>
+        </div>
+
+        <!-- Testimonials Page -->
+        <div id="page-testimonials" class="page-view">
+            <h2 class="section-title" id="testimonials-title">شهادات العملاء</h2>
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- تُبنى بواسطة JavaScript من مصفوفة الترجمات -->
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="page-about" class="page-view">
+            <div class="about-box">
+                <div>
+                    <h2 id="about-heading">عن الاستشاري</h2>
+                    <p class="about-subtitle">م. أحمد فال جمال الدين</p>
+                    <p class="about-text" id="about-p">مهندس دولة (BAC+5) ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً في مجال الذكاء الاصطناعي.</p>
+                    <p class="about-text" id="about-p2">يعمل حالياً في قطر كمشرف إداري ومطور بايثون وذكاء اصطناعي مستقل. مقيم في الدوحة، قطر.</p>
+                    <ul class="about-list" id="aboutList"></ul>
+                    <div class="about-actions">
+                        <a href="https://github.com/AHMEDVALL70" target="_blank" class="btn-secondary"><i class="fa-brands fa-github"></i> <span id="btn-github">GitHub</span></a>
+                        <a href="https://ahmedvall70.github.io/ahmed-vall-cv/" target="_blank" class="btn-secondary"><i class="fa-solid fa-file-pdf"></i> <span id="btn-cv">تحميل السيرة الذاتية</span></a>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">25+</div>
-                    <div class="stat-label" id="stat-exp">سنة خبرة</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">✓</div>
-                    <div class="stat-label">قيادة هندسية واستشارات تقنية موثوقة</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">✓</div>
-                    <div class="stat-label">حلول تخصصية مصممة خصيصاً</div>
+                <div class="stats-container">
+                    <div>
+                        <div class="stat-num">13+</div>
+                        <div class="stat-lbl" id="stat-proj">مشروعاً منشوراً</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">25+</div>
+                        <div class="stat-lbl" id="stat-exp">سنة خبرة</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">8</div>
+                        <div class="stat-lbl" id="stat-lead">مناصب قيادية</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Contact Page -->
+        <div id="page-contact" class="page-view">
+            <div class="contact-container">
+                <h2 class="section-title" id="contact-title">اتصل بنا</h2>
+                <p style="color: var(--text-muted);" id="contact-subtitle">يسعدنا التواصل لبحث فرص التعاون والاستشارات التقنية</p>
+
+                <div class="social-links">
+                    <a href="https://wa.me/97474736271" target="_blank" class="social-icon" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-vall-sidina/" target="_blank" class="social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.kaggle.com/ahmedvalljemaldine" target="_blank" class="social-icon" title="Kaggle"><i class="fa-brands fa-kaggle"></i></a>
+                    <a href="https://github.com/AHMEDVALL70" target="_blank" class="social-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://people.bayt.com/ahmed-vall-sidina" target="_blank" class="social-icon" title="Bayt"><i class="fa-solid fa-briefcase"></i></a>
+                    <a href="mailto:ahmedvalljemaldine@gmail.com" class="social-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+
+                <div class="contact-details">
+                    <a href="tel:+97474736271" class="contact-card">
+                        <i class="fa-solid fa-phone-flip" style="color: var(--primary);"></i>
+                        <span>+974 7473 6271</span>
+                    </a>
+                    <a href="mailto:ahmedvalljemaldine@gmail.com" class="contact-card">
+                        <i class="fa-solid fa-envelope" style="color: var(--primary);"></i>
+                        <span>ahmedvalljemaldine@gmail.com</span>
+                    </a>
+                    <span class="contact-card" style="cursor: default;">
+                        <i class="fa-solid fa-location-dot" style="color: var(--primary);"></i>
+                        <span id="contact-location">الدوحة، قطر</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h3 id="contact-form-title"><i class="fa-solid fa-paper-plane" style="color: var(--primary);"></i> أرسل رسالتك</h3>
+
+                <div class="alert-success" id="contactSuccessAlert">
+                    <i class="fa-solid fa-circle-check"></i> <span id="contactSuccessMsg">تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.</span>
+                </div>
+                <div class="alert-error" id="contactErrorAlert">
+                    <i class="fa-solid fa-circle-exclamation"></i> <span id="contactErrorMsg">حدث خطأ أثناء الإرسال. حاول مرة أخرى.</span>
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactFormSubmit(event)">
+                    <div class="form-group">
+                        <label id="lbl-c-name">الاسم الكامل</label>
+                        <input type="text" id="c-name" placeholder="أدخل اسمك الكريم">
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-c-email">البريد الإلكتروني</label>
+                        <input type="email" id="c-email" placeholder="example@mail.com">
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-c-phone">رقم الهاتف</label>
+                        <input type="tel" id="c-phone" placeholder="+974 12345678">
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-c-subject">الموضوع</label>
+                        <select id="c-subject">
+                            <option value="general" id="opt-general">استفسار عام</option>
+                            <option value="consulting" id="opt-consulting">طلب استشارة</option>
+                            <option value="project" id="opt-project">مشروع جديد</option>
+                            <option value="other" id="opt-other">أخرى</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="lbl-c-message">الرسالة</label>
+                        <textarea id="c-message" placeholder="اكتب تفاصيل استفسارك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="book-btn" id="btn-c-submit">
+                        <i class="fa-solid fa-paper-plane"></i> <span id="btn-c-submit-txt">إرسال</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
 
     <footer>
-        <div class="contact-info">
-            <a href="mailto:ahmedvalljemaldine@gmail.com">
-                <i class="fa-solid fa-envelope"></i> ahmedvalljemaldine@gmail.com
-            </a>
-            <a href="tel:+97474736271">
-                <i class="fa-solid fa-phone"></i> +974 7473 6271
-            </a>
+        <div class="container">
+            <p class="copyright" id="copyright-txt">© 2026 InnoVision - جميع الحقوق محفوظة</p>
         </div>
-        <p id="copyright-txt">© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
     </footer>
 
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeBookingModal()">&times;</button>
+            <h3 id="modal-title" style="margin-bottom: 20px;">حجز جلسة استشارية</h3>
+            <div class="alert-success" id="successAlert">
+                <i class="fa-solid fa-circle-check"></i> <span id="successMsg">تم إرسال طلبك بنجاح!</span>
+            </div>
+            <div class="alert-error" id="errorAlert">
+                <i class="fa-solid fa-circle-exclamation"></i> <span id="errorMsg">حدث خطأ أثناء الإرسال. حاول مرة أخرى.</span>
+            </div>
+            <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label id="lbl-srv">الخدمة المختارة</label>
+                    <input type="text" id="serviceName" readonly>
+                </div>
+                <div class="form-group">
+                    <label id="lbl-name">الاسم الكامل</label>
+                    <input type="text" id="fullName" placeholder="أدخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label id="lbl-email">البريد الإلكتروني</label>
+                    <input type="email" id="email" placeholder="example@domain.com">
+                </div>
+                <div class="form-group">
+                    <label id="lbl-phone">رقم الهاتف</label>
+                    <div class="phone-input-group">
+                        <select id="countryCode">
+                            <option value="+974">🇶🇦 قطر (+974)</option>
+                            <option value="+966">🇸🇦 السعودية (+966)</option>
+                            <option value="+971">🇦🇪 الإمارات (+971)</option>
+                            <option value="+965">🇰🇼 الكويت (+965)</option>
+                            <option value="+968">🇴🇲 عمان (+968)</option>
+                            <option value="+973">🇧🇭 البحرين (+973)</option>
+                            <option value="+20">🇪🇬 مصر (+20)</option>
+                            <option value="+212">🇲🇦 المغرب (+212)</option>
+                            <option value="+213">🇩🇿 الجزائر (+213)</option>
+                            <option value="+216">🇹🇳 تونس (+216)</option>
+                            <option value="+218">🇱🇾 ليبيا (+218)</option>
+                            <option value="+962">🇯🇴 الأردن (+962)</option>
+                            <option value="+970">🇵🇸 فلسطين (+970)</option>
+                            <option value="+961">🇱🇧 لبنان (+961)</option>
+                            <option value="+963">🇸🇾 سوريا (+963)</option>
+                            <option value="+964">🇮🇶 العراق (+964)</option>
+                            <option value="+967">🇾🇪 اليمن (+967)</option>
+                            <option value="+249">🇸🇩 السودان (+249)</option>
+                            <option value="+252">🇸🇴 الصومال (+252)</option>
+                            <option value="+222">🇲🇷 موريتانيا (+222)</option>
+                            <option value="+291">🇪🇷 إريتريا (+291)</option>
+                            <option value="+253">🇩🇯 جيبوتي (+253)</option>
+                            <option value="+269">🇰🇲 جزر القمر (+269)</option>
+                            <option value="+91">🇮🇳 الهند (+91)</option>
+                            <option value="+92">🇵🇰 باكستان (+92)</option>
+                            <option value="+880">🇧🇩 بنجلاديش (+880)</option>
+                            <option value="+977">🇳🇵 نيبال (+977)</option>
+                            <option value="+94">🇱🇰 سريلانكا (+94)</option>
+                            <option value="+86">🇨🇳 الصين (+86)</option>
+                            <option value="+81">🇯🇵 اليابان (+81)</option>
+                            <option value="+82">🇰🇷 كوريا الجنوبية (+82)</option>
+                            <option value="+84">🇻🇳 فيتنام (+84)</option>
+                            <option value="+60">🇲🇾 ماليزيا (+60)</option>
+                            <option value="+65">🇸🇬 سنغافورة (+65)</option>
+                            <option value="+66">🇹🇭 تايلاند (+66)</option>
+                            <option value="+62">🇮🇩 إندونيسيا (+62)</option>
+                            <option value="+63">🇵🇭 الفلبين (+63)</option>
+                            <option value="+855">🇰🇭 كمبوديا (+855)</option>
+                            <option value="+856">🇱🇦 لاوس (+856)</option>
+                            <option value="+95">🇲🇲 ميانمار (+95)</option>
+                            <option value="+90">🇹🇷 تركيا (+90)</option>
+                            <option value="+98">🇮🇷 إيران (+98)</option>
+                            <option value="+93">🇦🇫 أفغانستان (+93)</option>
+                            <option value="+44">🇬🇧 بريطانيا (+44)</option>
+                            <option value="+33">🇫🇷 فرنسا (+33)</option>
+                            <option value="+49">🇩🇪 ألمانيا (+49)</option>
+                            <option value="+39">🇮🇹 إيطاليا (+39)</option>
+                            <option value="+34">🇪🇸 إسبانيا (+34)</option>
+                            <option value="+31">🇳🇱 هولندا (+31)</option>
+                            <option value="+32">🇧🇪 بلجيكا (+32)</option>
+                            <option value="+41">🇨🇭 سويسرا (+41)</option>
+                            <option value="+43">🇦🇹 النمسا (+43)</option>
+                            <option value="+46">🇸🇪 السويد (+46)</option>
+                            <option value="+47">🇳🇴 النرويج (+47)</option>
+                            <option value="+45">🇩🇰 الدنمارك (+45)</option>
+                            <option value="+358">🇫🇮 فنلندا (+358)</option>
+                            <option value="+48">🇵🇱 بولندا (+48)</option>
+                            <option value="+36">🇭🇺 المجر (+36)</option>
+                            <option value="+40">🇷🇴 رومانيا (+40)</option>
+                            <option value="+420">🇨🇿 التشيك (+420)</option>
+                            <option value="+30">🇬🇷 اليونان (+30)</option>
+                            <option value="+372">🇪🇪 إستونيا (+372)</option>
+                            <option value="+371">🇱🇻 لاتفيا (+371)</option>
+                            <option value="+370">🇱🇹 ليتوانيا (+370)</option>
+                            <option value="+1">🇺🇸 الولايات المتحدة (+1)</option>
+                            <option value="+52">🇲🇽 المكسيك (+52)</option>
+                            <option value="+55">🇧🇷 البرازيل (+55)</option>
+                            <option value="+56">🇨🇱 تشيلي (+56)</option>
+                            <option value="+54">🇦🇷 الأرجنتين (+54)</option>
+                            <option value="+51">🇵🇪 بيرو (+51)</option>
+                            <option value="+57">🇨🇴 كولومبيا (+57)</option>
+                            <option value="+58">🇻🇪 فنزويلا (+58)</option>
+                            <option value="+234">🇳🇬 نيجيريا (+234)</option>
+                            <option value="+254">🇰🇪 كينيا (+254)</option>
+                            <option value="+27">🇿🇦 جنوب أفريقيا (+27)</option>
+                            <option value="+256">🇺🇬 أوغندا (+256)</option>
+                            <option value="+255">🇹🇿 تنزانيا (+255)</option>
+                            <option value="+233">🇬🇭 غانا (+233)</option>
+                            <option value="+225">🇨🇮 ساحل العاج (+225)</option>
+                            <option value="+260">🇿🇲 زامبيا (+260)</option>
+                            <option value="+263">🇿🇼 زيمبابوي (+263)</option>
+                            <option value="+61">🇦🇺 أستراليا (+61)</option>
+                            <option value="+64">🇳🇿 نيوزيلندا (+64)</option>
+                        </select>
+                        <input type="tel" id="phone" placeholder="7473 6271">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label id="lbl-message">الرسالة</label>
+                    <textarea id="bookingMessage" placeholder="اكتب تفاصيلك..."></textarea>
+                </div>
+                <button type="submit" class="book-btn" id="btn-submit">
+                    <span id="btn-submit-txt">إرسال الطلب</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <button class="chat-widget-btn" onclick="toggleChat()">
+        <i class="fa-solid fa-robot"></i>
+        <span id="chat-btn-label">أسأل الرد الآلي</span>
+    </button>
+
+    <div class="chat-box" id="chatWidget">
+        <div class="chat-header">
+            <span><i class="fa-solid fa-robot"></i> <span id="chat-header-txt">مساعد ذكي</span></span>
+            <button class="close-chat" onclick="toggleChat()">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-msg bot">
+                <span id="chat-welcome">مرحباً! اسألني عن الخبرات أو المشاريع!</span>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="اكتب سؤالك..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+            <button onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+        /* ============ CONTACT EMAIL (FormSubmit) ============ */
+        const CONTACT_EMAIL = 'ahmedvalljemaldine@gmail.com';
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
+        /* ============ TRANSLATIONS ============ */
+        const translations = {
+            ar: {
+                pageTitle: "InnoVision | ابتكار للدراسات والتحول الرقمي",
+                logoText: "InnoVision",
+                navServices: "الخدمات", navProjects: "مشاريع سابقة", navTestimonials: "آراء العملاء", navAbout: "عن الاستشاري", navContact: "اتصل بنا",
+                heroBadge: "الابتكار والتحول الرقمي",
+                heroTitle: "ارتقِ بأعمالك باستخدام الذكاء الاصطناعي",
+                heroSubtitle: "نقدم استشارات تخصصية وحلولاً برمجية متطورة في مجالات الذكاء الاصطناعي، التعلم الآلي، والأنظمة البيومترية",
+                btnExploreServices: "استكشف الخدمات",
+                btnDirectContact: "تواصل معنا مباشر",
+                featH1: "حلول تخصصية", featP1: "نماذج ذكاء اصطناعي مصممة خصيصاً",
+                featH2: "13+ مشروعاً", featP2: "حلول متقدمة وفعالة",
+                featH3: "25+ سنة خبرة", featP3: "قيادة هندسية موثوقة",
+                servicesTitle: "خدمات الاستشارات",
+                servicesSubtitle: "مجموعة متكاملة من الخدمات الاستشارية والتقنية",
+                bookBtnText: "حجز جلسة",
+                services: [
+                    { icon: "fa-arrows-rotate", title: "استشارات التحول الرقمي", desc: "تطوير استراتيجيات تحول رقمي شاملة وتطبيق الحلول المتقدمة" },
+                    { icon: "fa-brain", title: "دراسات الذكاء الاصطناعي", desc: "تحليل متخصص وتطبيق نماذج التعلم الآلي" },
+                    { icon: "fa-fingerprint", title: "الأنظمة البيومترية", desc: "تصميم وتكامل أنظمة التعرف على الوجه والسمات البيومترية" },
+                    { icon: "fa-chart-column", title: "تحليل البيانات", desc: "جمع وتحليل البيانات واستخراج الرؤى لاتخاذ قرارات دقيقة" },
+                    { icon: "fa-globe", title: "تصميم مواقع الويب", desc: "تصميم وتطوير مواقع ويب احترافية متوافقة مع المعايير" },
+                    { icon: "fa-lightbulb", title: "الاستشارات التقنية", desc: "تقديم استشارات تقنية متخصصة لتحسين البنية التحتية" },
+                    { icon: "fa-magnifying-glass", title: "تحسين محركات البحث (SEO)", desc: "تحسين ظهور موقعك في نتائج البحث وزيادة الزوار" },
+                    { icon: "fa-file-circle-check", title: "مراجعة السيرة الذاتية", desc: "مراجعة احترافية للسيرة الذاتية لضمان توافقها مع أفضل الممارسات" },
+                    { icon: "fa-pen-nib", title: "كتابة السيرة الذاتية", desc: "كتابة سيرة ذاتية احترافية تعكس مهاراتك وخبراتك" },
+                    { icon: "fa-clipboard-list", title: "إدارة البرامج", desc: "إدارة وتنفيذ البرامج والمشاريع من التخطيط إلى التسليم" },
+                    { icon: "fa-building", title: "التثمين العقاري", desc: "تقدير القيمة السوقية للعقارات باستخدام أساليب علمية" },
+                    { icon: "fa-sack-dollar", title: "إعداد التقارير المالية", desc: "إعداد تقارير مالية احترافية تعكس أداء المؤسسة" }
+                ],
+                projectsTitle: "مشاريع سابقة (Case Studies)",
+                projects: [
+                    { tag: "🏠 ذكاء اصطناعي وعقارات", title: "منصة التنبؤ بأسعار العقارات في قطر", desc: "نموذج تعلم آلي متقدم للتنبؤ بأسعار العقارات في قطر", techs: ["Python", "Random Forest", "ML"], link: "https://ahmedvall70.github.io/AhmedVall_PropAI/", linkText: "عرض المشروع" },
+                    { tag: "📄 معالجة النصوص", title: "محسّن السيرة الذاتية ATS", desc: "تحسين توافق السيرة الذاتية مع متطلبات أنظمة ATS باستخدام TF-IDF", techs: ["Python", "TF-IDF", "NLP"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb", linkText: "عرض على GitHub" },
+                    { tag: "🛂 كشف الشذوذ", title: "كشف الاحتيال في الصفقات العمومية", desc: "نموذج متخصص للكشف عن الأنماط المشبوهة في الصفقات", techs: ["Python", "Isolation Forest", "ML"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Procurement_Fraud_Detection_11.ipynb", linkText: "عرض على GitHub" },
+                    { tag: "🩺 التنبؤ الطبي", title: "نموذج التنبؤ بالسكري", desc: "تحليل بيانات طبية للتنبؤ المبكر بمرض السكري", techs: ["Python", "Scikit-learn", "ML"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", linkText: "عرض على GitHub" },
+                    { tag: "💬 معالجة اللغة الطبيعية", title: "تحليل المشاعر (NLP)", desc: "تحليل المشاعر في النصوص العربية والإنجليزية", techs: ["Python", "NLP", "Transformers"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", linkText: "عرض على GitHub" },
+                    { tag: "📊 التنبؤ المالي", title: "التنبؤ بأسعار العملات الرقمية", desc: "نموذج لتوقع أسعار العملات الرقمية باستخدام التعلم العميق", techs: ["Python", "Deep Learning", "LSTM"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb", linkText: "عرض على GitHub" }
+                ],
+                testimonialsTitle: "شهادات العملاء",
+                testimonials: [
+                    { text: "استشاراتنا ساعدتنا كثيراً في تطويرنا الاستراتيجي والتقني.", author: "محمد الكواري", role: "CTO، شركة تقنية" },
+                    { text: "خبرتهم العميقة أضافت قيمة حقيقية لمشروعنا.", author: "خالد محمود", role: "مدير المشاريع" },
+                    { text: "فريق احترافي وموثوق جداً.", author: "علي البحراني", role: "مدير الفريق التقني" },
+                    { text: "ساعدونا في تحقيق أهدافنا الرقمية بسرعة وكفاءة.", author: "نورة السبيعي", role: "مديرة التحول الرقمي" },
+                    { text: "حلولهم المبتكرة غيرت طريقة عملنا بالكامل.", author: "فهد المنصوري", role: "رئيس قسم التقنية" },
+                    { text: "التزامهم بالجودة والدقة كان مذهلاً.", author: "سارة العمادي", role: "مديرة العمليات" }
+                ],
+                contactTitle: "اتصل بنا", contactSubtitle: "يسعدنا التواصل لبحث فرص التعاون والاستشارات التقنية",
+                contactLocation: "الدوحة، قطر",
+                aboutHeading: "عن الاستشاري",
+                aboutP: "مهندس دولة (BAC+5) ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً في مجال الذكاء الاصطناعي.",
+                aboutP2: "يعمل حالياً في قطر كمشرف إداري ومطور بايثون وذكاء اصطناعي مستقل. مقيم في الدوحة، قطر.",
+                aboutItems: [
+                    "خبرة متقدمة في الذكاء الاصطناعي والتعلم الآلي",
+                    "تطوير نماذج تنبؤية متكاملة",
+                    "حلول تقنية مخصصة للمؤسسات",
+                    "الأنظمة البيومترية والوثائق المؤمنة",
+                    "شبكات Cisco والأمن السيبراني"
+                ],
+                statProj: "مشروعاً منشوراً", statExp: "سنة خبرة", statLead: "مناصب قيادية",
+                copyrightTxt: "© 2026 InnoVision - جميع الحقوق محفوظة",
+                modalTitle: "حجز جلسة استشارية",
+                lblSrv: "الخدمة المختارة", lblName: "الاسم الكامل", lblEmail: "البريد الإلكتروني", lblPhone: "رقم الهاتف", lblMessage: "الرسالة",
+                btnSubmit: "إرسال الطلب", successMsg: "تم إرسال طلبك بنجاح!", errorMsg: "حدث خطأ أثناء الإرسال. حاول مرة أخرى.",
+                contactFormTitle: "أرسل رسالتك",
+                lblCName: "الاسم الكامل", lblCEmail: "البريد الإلكتروني", lblCPhone: "رقم الهاتف", lblCSubject: "الموضوع", lblCMessage: "الرسالة",
+                optGeneral: "استفسار عام", optConsulting: "طلب استشارة", optProject: "مشروع جديد", optOther: "أخرى",
+                btnCSubmit: "إرسال", contactSuccessMsg: "تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.", contactErrorMsg: "حدث خطأ أثناء الإرسال. حاول مرة أخرى.",
+                chatBtnLabel: "أسأل الرد الآلي", chatHeaderTxt: "مساعد ذكي", chatWelcome: "مرحباً! اسألني عن الخبرات أو المشاريع!",
+                chatReply: "شكراً على سؤالك! يمكنك التواصل معنا مباشرة عبر صفحة اتصل بنا.",
+                themeText: "الوضع الداكن", themeTextDark: "الوضع المضيء", btnGithub: "GitHub", btnCv: "تحميل السيرة الذاتية",
+                formRequiredAlert: "الرجاء ملء جميع الحقول بشكل صحيح"
+            },
+            en: {
+                pageTitle: "InnoVision | Innovation Studies & Digital Transformation",
+                logoText: "InnoVision",
+                navServices: "Services", navProjects: "Projects", navTestimonials: "Testimonials", navAbout: "About", navContact: "Contact",
+                heroBadge: "Innovation & Digital Transformation",
+                heroTitle: "Elevate Your Business with Artificial Intelligence",
+                heroSubtitle: "Specialized consulting and advanced software solutions in AI, Machine Learning, and Biometric Systems",
+                btnExploreServices: "Explore Services",
+                btnDirectContact: "Contact Us Directly",
+                featH1: "Specialized Solutions", featP1: "AI models tailored specifically for you",
+                featH2: "13+ Projects", featP2: "Advanced and effective solutions",
+                featH3: "25+ Years Experience", featP3: "Trusted engineering leadership",
+                servicesTitle: "Consulting Services",
+                servicesSubtitle: "A complete range of consulting and technical services",
+                bookBtnText: "Book a Session",
+                services: [
+                    { icon: "fa-arrows-rotate", title: "Digital Transformation Consulting", desc: "Comprehensive digital strategy and advanced solutions" },
+                    { icon: "fa-brain", title: "AI & Machine Learning Studies", desc: "Specialized analysis and ML model implementation" },
+                    { icon: "fa-fingerprint", title: "Biometric Systems", desc: "Facial recognition and biometric system design & integration" },
+                    { icon: "fa-chart-column", title: "Data Analysis", desc: "Collecting and analyzing data to extract insights for accurate decisions" },
+                    { icon: "fa-globe", title: "Website Design", desc: "Designing and developing professional, standards-compliant websites" },
+                    { icon: "fa-lightbulb", title: "Technical Consulting", desc: "Specialized technical consulting to improve infrastructure" },
+                    { icon: "fa-magnifying-glass", title: "SEO Optimization", desc: "Improving your site's search ranking and increasing traffic" },
+                    { icon: "fa-file-circle-check", title: "CV Review", desc: "Professional CV review to ensure alignment with best practices" },
+                    { icon: "fa-pen-nib", title: "CV Writing", desc: "Professional CV writing that reflects your skills and experience" },
+                    { icon: "fa-clipboard-list", title: "Program Management", desc: "Managing and executing programs and projects from planning to delivery" },
+                    { icon: "fa-building", title: "Real Estate Valuation", desc: "Estimating property market value using scientific methods" },
+                    { icon: "fa-sack-dollar", title: "Financial Reporting", desc: "Preparing professional financial reports reflecting organizational performance" }
+                ],
+                projectsTitle: "Previous Projects (Case Studies)",
+                projects: [
+                    { tag: "🏠 AI & Real Estate", title: "Qatar Real Estate Price Prediction Platform", desc: "Advanced ML model for Qatar property price prediction", techs: ["Python", "Random Forest", "ML"], link: "https://ahmedvall70.github.io/AhmedVall_PropAI/", linkText: "View Project" },
+                    { tag: "📄 Text Processing", title: "ATS Resume Optimizer", desc: "Improve resume compatibility with ATS requirements using TF-IDF", techs: ["Python", "TF-IDF", "NLP"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/ATS_CV_Optimizer_12.ipynb", linkText: "View on GitHub" },
+                    { tag: "🛂 Anomaly Detection", title: "Fraud Detection in Public Tenders", desc: "Detect suspicious patterns in public procurement", techs: ["Python", "Isolation Forest", "ML"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Procurement_Fraud_Detection_11.ipynb", linkText: "View on GitHub" },
+                    { tag: "🩺 Medical Prediction", title: "Diabetes Prediction Model", desc: "Medical data analysis for early diabetes prediction", techs: ["Python", "Scikit-learn", "ML"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Diabetes_Prediction_01.ipynb", linkText: "View on GitHub" },
+                    { tag: "💬 NLP", title: "Sentiment Analysis (NLP)", desc: "Sentiment analysis on Arabic and English text", techs: ["Python", "NLP", "Transformers"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Sentiment_Analysis_04.ipynb", linkText: "View on GitHub" },
+                    { tag: "📊 Financial Forecasting", title: "Cryptocurrency Price Prediction", desc: "Deep learning model to forecast cryptocurrency prices", techs: ["Python", "Deep Learning", "LSTM"], link: "https://github.com/AHMEDVALL70/ahmed-vall-cv/blob/main/Crypto_Price_Predictor_09.ipynb", linkText: "View on GitHub" }
+                ],
+                testimonialsTitle: "Client Testimonials",
+                testimonials: [
+                    { text: "Their consulting helped us a lot with our strategic and technical development.", author: "Mohammed Al-Kuwari", role: "CTO, Tech Company" },
+                    { text: "Their deep expertise added real value to our project.", author: "Khalid Mahmoud", role: "Project Manager" },
+                    { text: "A very professional and reliable team.", author: "Ali Al-Bahrani", role: "Technical Team Lead" },
+                    { text: "They helped us achieve our digital goals quickly and efficiently.", author: "Noura Al-Subaie", role: "Digital Transformation Manager" },
+                    { text: "Their innovative solutions completely changed the way we work.", author: "Fahad Al-Mansouri", role: "Head of Technology" },
+                    { text: "Their commitment to quality and precision was remarkable.", author: "Sara Al-Emadi", role: "Operations Manager" }
+                ],
+                contactTitle: "Contact Us", contactSubtitle: "We welcome hearing from you to discuss collaboration and consulting opportunities",
+                contactLocation: "Doha, Qatar",
+                aboutHeading: "About the Consultant",
+                aboutP: "A State Engineer (BAC+5) and machine learning specialist from Mauritania. Combines 25+ years of experience in biometric systems, civil registry, and digital transformation with 13 published AI projects.",
+                aboutP2: "Currently working in Qatar as an administrative supervisor and independent Python/AI developer. Based in Doha, Qatar.",
+                aboutItems: [
+                    "Advanced expertise in AI and Machine Learning",
+                    "Building integrated predictive models",
+                    "Custom technical solutions for organizations",
+                    "Biometric systems and secure documentation",
+                    "Cisco networking and cybersecurity"
+                ],
+                statProj: "Published Projects", statExp: "Years of Experience", statLead: "Leadership Roles",
+                copyrightTxt: "© 2026 InnoVision - All Rights Reserved",
+                modalTitle: "Book a Consultation Session",
+                lblSrv: "Selected Service", lblName: "Full Name", lblEmail: "Email Address", lblPhone: "Phone Number", lblMessage: "Message",
+                btnSubmit: "Submit Booking", successMsg: "Your request was submitted successfully!", errorMsg: "An error occurred while sending. Please try again.",
+                contactFormTitle: "Send Us a Message",
+                lblCName: "Full Name", lblCEmail: "Email Address", lblCPhone: "Phone Number", lblCSubject: "Subject", lblCMessage: "Message",
+                optGeneral: "General Inquiry", optConsulting: "Consulting Request", optProject: "New Project", optOther: "Other",
+                btnCSubmit: "Send", contactSuccessMsg: "Your message has been sent successfully! We'll be in touch soon.", contactErrorMsg: "An error occurred while sending. Please try again.",
+                chatBtnLabel: "Ask AI Assistant", chatHeaderTxt: "Smart Assistant", chatWelcome: "Hi! Ask me about experience or projects!",
+                chatReply: "Thank you for your question! Please contact us directly via the Contact page.",
+                themeText: "Dark Mode", themeTextDark: "Light Mode", btnGithub: "GitHub", btnCv: "Download CV",
+                formRequiredAlert: "Please fill all fields correctly"
+            }
+        };
+
+        let currentLang = localStorage.getItem('site_lang') || 'ar';
+        let currentTheme = localStorage.getItem('site_theme') || 'light';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
         });
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-            });
-        });
+        /* ============ THEME ============ */
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('site_theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            const t = translations[currentLang];
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-text').textContent = t.themeTextDark;
+                document.querySelector('#theme-toggle i').className = 'fa-solid fa-sun';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.getElementById('theme-text').textContent = t.themeText;
+                document.querySelector('#theme-toggle i').className = 'fa-solid fa-moon';
+            }
+        }
+
+        /* ============ LANGUAGE ============ */
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('site_lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function setText(id, text) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        }
+
+        function applyLanguage(lang) {
+            const t = translations[lang];
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('page-title').textContent = t.pageTitle;
+
+            setText('logo-text', t.logoText);
+            setText('nav-services', t.navServices);
+            setText('nav-projects', t.navProjects);
+            setText('nav-testimonials', t.navTestimonials);
+            setText('nav-about', t.navAbout);
+            setText('nav-contact', t.navContact);
+
+            setText('hero-badge', t.heroBadge);
+            setText('hero-title', t.heroTitle);
+            setText('hero-subtitle', t.heroSubtitle);
+            setText('btn-explore-services', t.btnExploreServices);
+            setText('btn-direct-contact', t.btnDirectContact);
+            setText('feat-h1', t.featH1); setText('feat-p1', t.featP1);
+            setText('feat-h2', t.featH2); setText('feat-p2', t.featP2);
+            setText('feat-h3', t.featH3); setText('feat-p3', t.featP3);
+
+            setText('services-title', t.servicesTitle);
+            setText('services-subtitle', t.servicesSubtitle);
+            renderServices(t);
+
+            setText('projects-title', t.projectsTitle);
+            renderProjects(t);
+
+            setText('testimonials-title', t.testimonialsTitle);
+            renderTestimonials(t);
+
+            setText('contact-title', t.contactTitle);
+            setText('contact-subtitle', t.contactSubtitle);
+            setText('contact-location', t.contactLocation);
+            setText('contact-form-title', t.contactFormTitle);
+            setText('lbl-c-name', t.lblCName);
+            setText('lbl-c-email', t.lblCEmail);
+            setText('lbl-c-phone', t.lblCPhone);
+            setText('lbl-c-subject', t.lblCSubject);
+            setText('lbl-c-message', t.lblCMessage);
+            setText('opt-general', t.optGeneral);
+            setText('opt-consulting', t.optConsulting);
+            setText('opt-project', t.optProject);
+            setText('opt-other', t.optOther);
+            setText('btn-c-submit-txt', t.btnCSubmit);
+            setText('contactSuccessMsg', t.contactSuccessMsg);
+            setText('contactErrorMsg', t.contactErrorMsg);
+
+            setText('about-heading', t.aboutHeading);
+            setText('about-p', t.aboutP);
+            setText('about-p2', t.aboutP2);
+            renderAboutList(t);
+            setText('stat-proj', t.statProj);
+            setText('stat-exp', t.statExp);
+            setText('stat-lead', t.statLead);
+            setText('btn-github', t.btnGithub);
+            setText('btn-cv', t.btnCv);
+
+            setText('copyright-txt', t.copyrightTxt);
+
+            setText('modal-title', t.modalTitle);
+            setText('lbl-srv', t.lblSrv);
+            setText('lbl-name', t.lblName);
+            setText('lbl-email', t.lblEmail);
+            setText('lbl-phone', t.lblPhone);
+            setText('lbl-message', t.lblMessage);
+            setText('btn-submit-txt', t.btnSubmit);
+            setText('successMsg', t.successMsg);
+            setText('errorMsg', t.errorMsg);
+
+            setText('chat-btn-label', t.chatBtnLabel);
+            setText('chat-header-txt', t.chatHeaderTxt);
+
+            const chatWelcomeEl = document.querySelector('#chatBody .chat-msg.bot span');
+            if (chatWelcomeEl && document.querySelectorAll('#chatBody .chat-msg').length === 1) {
+                chatWelcomeEl.textContent = t.chatWelcome;
+            }
+
+            document.getElementById('lang-toggle').querySelector('span').textContent = lang === 'ar' ? 'English' : 'عربي';
+        }
+
+        function renderServices(t) {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = t.services.map((s, idx) => `
+                <div class="service-card">
+                    <div>
+                        <i class="fa-solid ${s.icon} srv-icon"></i>
+                        <h3 class="srv-title">${s.title}</h3>
+                        <p class="srv-desc">${s.desc}</p>
+                    </div>
+                    <button class="book-btn" onclick="openBookingModal(${idx})">
+                        <span>${t.bookBtnText}</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function renderProjects(t) {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = t.projects.map((p) => `
+                <div class="project-card">
+                    <div>
+                        <span class="project-tag">${p.tag}</span>
+                        <h3 class="project-title">${p.title}</h3>
+                        <p class="project-desc">${p.desc}</p>
+                        <div class="project-techs">
+                            ${p.techs.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                    <a href="${p.link}" target="_blank" class="project-link">
+                        <span>${p.linkText}</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        function renderTestimonials(t) {
+            const grid = document.getElementById('testimonialsGrid');
+            grid.innerHTML = t.testimonials.map((item) => `
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>${item.text}</p>
+                    <div class="author-info">
+                        <h4>${item.author}</h4>
+                        <span>${item.role}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderAboutList(t) {
+            const list = document.getElementById('aboutList');
+            list.innerHTML = t.aboutItems.map(item => `<li><i class="fa-solid fa-check"></i> <span>${item}</span></li>`).join('');
+        }
+
+        /* ============ PAGE SWITCHING ============ */
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            const page = document.getElementById(`page-${pageId}`);
+            if (page) page.classList.add('active');
+            document.getElementById('navLinks').classList.remove('open');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ============ BOOKING MODAL ============ */
+        const modal = document.getElementById('bookingModal');
+
+        function openBookingModal(idx) {
+            const t = translations[currentLang];
+            document.getElementById('serviceName').value = t.services[idx].title;
+            document.getElementById('successAlert').classList.remove('show');
+            document.getElementById('errorAlert').classList.remove('show');
+            document.getElementById('bookingForm').reset();
+            document.getElementById('serviceName').value = t.services[idx].title;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        window.onclick = (e) => { if (e.target === modal) closeBookingModal(); };
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const t = translations[currentLang];
+            const service = document.getElementById('serviceName').value;
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const countryCode = document.getElementById('countryCode').value;
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('bookingMessage').value.trim();
+
+            if (name.length < 3 || !email.includes('@')) {
+                alert(t.formRequiredAlert);
+                return;
+            }
+
+            const submitBtn = document.getElementById('btn-submit');
+            submitBtn.disabled = true;
+            document.getElementById('successAlert').classList.remove('show');
+            document.getElementById('errorAlert').classList.remove('show');
+
+            try {
+                const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify({
+                        name, email, _replyto: email,
+                        phone: countryCode + phone,
+                        service, message,
+                        _subject: `طلب حجز جلسة — ${service}`,
+                        _template: 'table',
+                        _captcha: 'false'
+                    })
+                });
+                if (!response.ok) throw new Error('Submit failed');
+
+                document.getElementById('successAlert').classList.add('show');
+                document.getElementById('bookingForm').reset();
+                document.getElementById('serviceName').value = service;
+                setTimeout(() => closeBookingModal(), 3000);
+            } catch (err) {
+                console.error('Booking submit error:', err);
+                document.getElementById('errorAlert').classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+            }
+        }
+
+        /* ============ CONTACT PAGE FORM ============ */
+        async function handleContactFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('c-name').value.trim();
+            const email = document.getElementById('c-email').value.trim();
+            const phone = document.getElementById('c-phone').value.trim();
+            const subject = document.getElementById('c-subject').value;
+            const message = document.getElementById('c-message').value.trim();
+            const t = translations[currentLang];
+
+            if (!name || !email || !message) {
+                alert(t.formRequiredAlert);
+                return;
+            }
+
+            const submitBtn = document.getElementById('btn-c-submit');
+            submitBtn.disabled = true;
+            document.getElementById('contactSuccessAlert').classList.remove('show');
+            document.getElementById('contactErrorAlert').classList.remove('show');
+
+            try {
+                const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify({
+                        name, email, _replyto: email,
+                        phone: phone || 'غير مدخل',
+                        subject, message,
+                        _subject: `اتصال من ${name} — ${subject}`,
+                        _template: 'table',
+                        _captcha: 'false'
+                    })
+                });
+                if (!response.ok) throw new Error('Submit failed');
+
+                document.getElementById('contactSuccessAlert').classList.add('show');
+                document.getElementById('contactForm').reset();
+                setTimeout(() => document.getElementById('contactSuccessAlert').classList.remove('show'), 6000);
+            } catch (err) {
+                console.error('Contact submit error:', err);
+                document.getElementById('contactErrorAlert').classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+            }
+        }
+
+        /* ============ CHAT WIDGET ============ */
+        function toggleChat() {
+            document.getElementById('chatWidget').classList.toggle('active');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            const t = translations[currentLang];
+            const chatBody = document.getElementById('chatBody');
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-msg user';
+            userMsg.textContent = text;
+            chatBody.appendChild(userMsg);
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-msg bot';
+                botMsg.textContent = t.chatReply;
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+        }
     </script>
-    
-    <script src="js/translations.js"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/chatbot.js"></script>
-    <script src="js/form-handler.js"></script>
 </body>
 </html>
