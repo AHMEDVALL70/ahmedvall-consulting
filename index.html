@@ -155,26 +155,26 @@
 <body>
     <header>
         <div class="container nav-container">
-            <div class="logo" onclick="switchPage('home')">
+            <div class="logo" onclick="switchPage('home')" role="button" tabindex="0" onkeydown="if(event.key==='Enter') switchPage('home')" aria-label="InnoVision - الصفحة الرئيسية">
                 <img src="logo.png" alt="InnoVision Logo" onerror="this.style.display='none'">
                 <span id="logo-text">InnoVision</span>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a onclick="switchPage('services')" id="nav-services">الخدمات</a></li>
-                <li><a onclick="switchPage('projects')" id="nav-projects">مشاريع سابقة</a></li>
-                <li><a onclick="switchPage('testimonials')" id="nav-testimonials">آراء العملاء</a></li>
-                <li><a onclick="switchPage('about')" id="nav-about">عن الاستشاري</a></li>
-                <li><a onclick="switchPage('contact')" id="nav-contact">اتصل بنا</a></li>
+                <li><a onclick="switchPage('services')" id="nav-services" tabindex="0" onkeydown="if(event.key==='Enter') switchPage('services')">الخدمات</a></li>
+                <li><a onclick="switchPage('projects')" id="nav-projects" tabindex="0" onkeydown="if(event.key==='Enter') switchPage('projects')">مشاريع سابقة</a></li>
+                <li><a onclick="switchPage('testimonials')" id="nav-testimonials" tabindex="0" onkeydown="if(event.key==='Enter') switchPage('testimonials')">آراء العملاء</a></li>
+                <li><a onclick="switchPage('about')" id="nav-about" tabindex="0" onkeydown="if(event.key==='Enter') switchPage('about')">عن الاستشاري</a></li>
+                <li><a onclick="switchPage('contact')" id="nav-contact" tabindex="0" onkeydown="if(event.key==='Enter') switchPage('contact')">اتصل بنا</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="btn-icon" id="theme-toggle" onclick="toggleTheme()">
+                <button class="btn-icon" id="theme-toggle" onclick="toggleTheme()" aria-label="تبديل الوضع الداكن/المضيء">
                     <i class="fa-solid fa-moon"></i>
                     <span id="theme-text">الوضع الداكن</span>
                 </button>
-                <button class="btn-icon" id="lang-toggle" onclick="toggleLanguage()">
+                <button class="btn-icon" id="lang-toggle" onclick="toggleLanguage()" aria-label="Switch language / تبديل اللغة">
                     <i class="fa-solid fa-globe"></i> <span>English</span>
                 </button>
-                <button class="menu-toggle" id="menuToggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+                <button class="menu-toggle" id="menuToggle" onclick="toggleMobileMenu()" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -259,8 +259,8 @@
                     <p class="about-text" id="about-p2">يعمل حالياً في قطر كمشرف إداري ومطور بايثون وذكاء اصطناعي مستقل. مقيم في الدوحة، قطر.</p>
                     <ul class="about-list" id="aboutList"></ul>
                     <div class="about-actions">
-                        <a href="https://github.com/AHMEDVALL70" target="_blank" class="btn-secondary"><i class="fa-brands fa-github"></i> <span id="btn-github">GitHub</span></a>
-                        <a href="https://ahmedvall70.github.io/ahmed-vall-cv/" target="_blank" class="btn-secondary"><i class="fa-solid fa-file-pdf"></i> <span id="btn-cv">تحميل السيرة الذاتية</span></a>
+                        <a href="https://github.com/AHMEDVALL70" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fa-brands fa-github"></i> <span id="btn-github">GitHub</span></a>
+                        <a href="https://ahmedvall70.github.io/ahmed-vall-cv/" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fa-solid fa-file-pdf"></i> <span id="btn-cv">تحميل السيرة الذاتية</span></a>
                     </div>
                 </div>
                 <div class="stats-container">
@@ -287,12 +287,12 @@
                 <p style="color: var(--text-muted);" id="contact-subtitle">يسعدنا التواصل لبحث فرص التعاون والاستشارات التقنية</p>
 
                 <div class="social-links">
-                    <a href="https://wa.me/97474736271" target="_blank" class="social-icon" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://www.linkedin.com/in/ahmed-vall-sidina/" target="_blank" class="social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://www.kaggle.com/ahmedvalljemaldine" target="_blank" class="social-icon" title="Kaggle"><i class="fa-brands fa-kaggle"></i></a>
-                    <a href="https://github.com/AHMEDVALL70" target="_blank" class="social-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://people.bayt.com/ahmed-vall-sidina" target="_blank" class="social-icon" title="Bayt"><i class="fa-solid fa-briefcase"></i></a>
-                    <a href="mailto:ahmedvalljemaldine@gmail.com" class="social-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://wa.me/97474736271" target="_blank" rel="noopener noreferrer" class="social-icon" title="واتساب" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-vall-sidina/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.kaggle.com/ahmedvalljemaldine" target="_blank" rel="noopener noreferrer" class="social-icon" title="Kaggle" aria-label="Kaggle"><i class="fa-brands fa-kaggle"></i></a>
+                    <a href="https://github.com/AHMEDVALL70" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://people.bayt.com/ahmed-vall-sidina" target="_blank" rel="noopener noreferrer" class="social-icon" title="Bayt" aria-label="Bayt"><i class="fa-solid fa-briefcase"></i></a>
+                    <a href="mailto:ahmedvalljemaldine@gmail.com" class="social-icon" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
                 </div>
 
                 <div class="contact-details">
@@ -364,7 +364,7 @@
     <!-- Booking Modal -->
     <div class="modal" id="bookingModal">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeBookingModal()">&times;</button>
+            <button class="close-btn" onclick="closeBookingModal()" aria-label="إغلاق النافذة">&times;</button>
             <h3 id="modal-title" style="margin-bottom: 20px;">حجز جلسة استشارية</h3>
             <div class="alert-success" id="successAlert">
                 <i class="fa-solid fa-circle-check"></i> <span id="successMsg">تم إرسال طلبك بنجاح!</span>
@@ -488,7 +488,7 @@
     </div>
 
     <!-- Chat Widget -->
-    <button class="chat-widget-btn" onclick="toggleChat()">
+    <button class="chat-widget-btn" onclick="toggleChat()" aria-label="فتح المساعد الذكي" aria-expanded="false" aria-controls="chatWidget">
         <i class="fa-solid fa-robot"></i>
         <span id="chat-btn-label">أسأل الرد الآلي</span>
     </button>
@@ -496,7 +496,7 @@
     <div class="chat-box" id="chatWidget">
         <div class="chat-header">
             <span><i class="fa-solid fa-robot"></i> <span id="chat-header-txt">مساعد ذكي</span></span>
-            <button class="close-chat" onclick="toggleChat()">&times;</button>
+            <button class="close-chat" onclick="toggleChat()" aria-label="إغلاق المحادثة">&times;</button>
         </div>
         <div class="chat-body" id="chatBody">
             <div class="chat-msg bot">
@@ -585,6 +585,14 @@
                 btnCSubmit: "إرسال", contactSuccessMsg: "تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.", contactErrorMsg: "حدث خطأ أثناء الإرسال. حاول مرة أخرى.",
                 chatBtnLabel: "أسأل الرد الآلي", chatHeaderTxt: "مساعد ذكي", chatWelcome: "مرحباً! اسألني عن الخبرات أو المشاريع!",
                 chatReply: "شكراً على سؤالك! يمكنك التواصل معنا مباشرة عبر صفحة اتصل بنا.",
+                chatReplies: [
+                    { keywords: ["خبرة", "خبرات", "سنوات"], reply: "لدى المستشار خبرة تفوق 25 سنة في الأنظمة البيومترية والتحول الرقمي، مع 13 مشروعاً منشوراً في الذكاء الاصطناعي." },
+                    { keywords: ["مشروع", "مشاريع", "بورتفوليو"], reply: "يمكنك تصفح 6 مشاريع تفصيلية في صفحة \"مشاريع سابقة\" من القائمة أعلاه، معظمها مرفق بروابط GitHub." },
+                    { keywords: ["خدمة", "خدمات"], reply: "نقدم 12 خدمة استشارية تقنية، من الذكاء الاصطناعي والأنظمة البيومترية إلى التثمين العقاري وكتابة السيرة الذاتية. تصفحها في صفحة \"الخدمات\"." },
+                    { keywords: ["سعر", "تكلفة", "فلوس", "رسوم"], reply: "الأسعار تختلف حسب نوع الخدمة ونطاق المشروع. احجز جلسة استشارية من صفحة الخدمات وسنناقش التفاصيل." },
+                    { keywords: ["تواصل", "اتصال", "ايميل", "بريد", "هاتف", "رقم"], reply: "يمكنك التواصل مباشرة عبر واتساب أو البريد الإلكتروني من صفحة \"اتصل بنا\"، أو تعبئة نموذج التواصل هناك." },
+                    { keywords: ["سيرة", "cv", "resume"], reply: "يمكنك تحميل السيرة الذاتية الكاملة من صفحة \"عن الاستشاري\"." }
+                ],
                 themeText: "الوضع الداكن", themeTextDark: "الوضع المضيء", btnGithub: "GitHub", btnCv: "تحميل السيرة الذاتية",
                 formRequiredAlert: "الرجاء ملء جميع الحقول بشكل صحيح"
             },
@@ -658,6 +666,14 @@
                 btnCSubmit: "Send", contactSuccessMsg: "Your message has been sent successfully! We'll be in touch soon.", contactErrorMsg: "An error occurred while sending. Please try again.",
                 chatBtnLabel: "Ask AI Assistant", chatHeaderTxt: "Smart Assistant", chatWelcome: "Hi! Ask me about experience or projects!",
                 chatReply: "Thank you for your question! Please contact us directly via the Contact page.",
+                chatReplies: [
+                    { keywords: ["experience", "years"], reply: "The consultant has 25+ years of experience in biometric systems and digital transformation, with 13 published AI projects." },
+                    { keywords: ["project", "projects", "portfolio"], reply: "You can browse 6 detailed projects on the \"Projects\" page from the menu above, most with GitHub links." },
+                    { keywords: ["service", "services"], reply: "We offer 12 consulting services, from AI and biometric systems to real estate valuation and CV writing. Browse them on the \"Services\" page." },
+                    { keywords: ["price", "cost", "fee", "rate"], reply: "Pricing depends on the service type and project scope. Book a consultation from the Services page and we'll discuss the details." },
+                    { keywords: ["contact", "email", "phone", "call"], reply: "You can reach out directly via WhatsApp or email from the \"Contact\" page, or fill out the contact form there." },
+                    { keywords: ["cv", "resume"], reply: "You can download the full CV from the \"About\" page." }
+                ],
                 themeText: "Dark Mode", themeTextDark: "Light Mode", btnGithub: "GitHub", btnCv: "Download CV",
                 formRequiredAlert: "Please fill all fields correctly"
             }
@@ -814,7 +830,7 @@
                             ${p.techs.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
                         </div>
                     </div>
-                    <a href="${p.link}" target="_blank" class="project-link">
+                    <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-link">
                         <span>${p.linkText}</span>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
@@ -848,8 +864,35 @@
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
             const page = document.getElementById(`page-${pageId}`);
             if (page) page.classList.add('active');
-            document.getElementById('navLinks').classList.remove('open');
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+            });
+            const navLink = document.getElementById(`nav-${pageId}`);
+            if (navLink) {
+                navLink.classList.add('active');
+                navLink.setAttribute('aria-current', 'page');
+            }
+
+            closeMobileMenu();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.getElementById('menuToggle');
+            const isOpen = navLinks.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
+            menuBtn.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');
+        }
+
+        function closeMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.getElementById('menuToggle');
+            navLinks.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.setAttribute('aria-label', 'فتح القائمة');
         }
 
         /* ============ BOOKING MODAL ============ */
@@ -872,6 +915,15 @@
         }
         window.onclick = (e) => { if (e.target === modal) closeBookingModal(); };
 
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (modal.classList.contains('active')) closeBookingModal();
+                const chatWidget = document.getElementById('chatWidget');
+                if (chatWidget.classList.contains('active')) toggleChat();
+                closeMobileMenu();
+            }
+        });
+
         async function handleFormSubmit(e) {
             e.preventDefault();
             const t = translations[currentLang];
@@ -882,15 +934,20 @@
             const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('bookingMessage').value.trim();
 
+            const errorAlertEl = document.getElementById('errorAlert');
+            const errorMsgEl = document.getElementById('errorMsg');
+
             if (name.length < 3 || !email.includes('@')) {
-                alert(t.formRequiredAlert);
+                errorMsgEl.textContent = t.formRequiredAlert;
+                errorAlertEl.classList.add('show');
+                document.getElementById('successAlert').classList.remove('show');
                 return;
             }
 
             const submitBtn = document.getElementById('btn-submit');
             submitBtn.disabled = true;
             document.getElementById('successAlert').classList.remove('show');
-            document.getElementById('errorAlert').classList.remove('show');
+            errorAlertEl.classList.remove('show');
 
             try {
                 const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
@@ -913,7 +970,8 @@
                 setTimeout(() => closeBookingModal(), 3000);
             } catch (err) {
                 console.error('Booking submit error:', err);
-                document.getElementById('errorAlert').classList.add('show');
+                errorMsgEl.textContent = t.errorMsg;
+                errorAlertEl.classList.add('show');
             } finally {
                 submitBtn.disabled = false;
             }
@@ -929,15 +987,20 @@
             const message = document.getElementById('c-message').value.trim();
             const t = translations[currentLang];
 
+            const contactErrorAlertEl = document.getElementById('contactErrorAlert');
+            const contactErrorMsgEl = document.getElementById('contactErrorMsg');
+
             if (!name || !email || !message) {
-                alert(t.formRequiredAlert);
+                contactErrorMsgEl.textContent = t.formRequiredAlert;
+                contactErrorAlertEl.classList.add('show');
+                document.getElementById('contactSuccessAlert').classList.remove('show');
                 return;
             }
 
             const submitBtn = document.getElementById('btn-c-submit');
             submitBtn.disabled = true;
             document.getElementById('contactSuccessAlert').classList.remove('show');
-            document.getElementById('contactErrorAlert').classList.remove('show');
+            contactErrorAlertEl.classList.remove('show');
 
             try {
                 const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
@@ -959,7 +1022,8 @@
                 setTimeout(() => document.getElementById('contactSuccessAlert').classList.remove('show'), 6000);
             } catch (err) {
                 console.error('Contact submit error:', err);
-                document.getElementById('contactErrorAlert').classList.add('show');
+                contactErrorMsgEl.textContent = t.contactErrorMsg;
+                contactErrorAlertEl.classList.add('show');
             } finally {
                 submitBtn.disabled = false;
             }
@@ -967,7 +1031,9 @@
 
         /* ============ CHAT WIDGET ============ */
         function toggleChat() {
-            document.getElementById('chatWidget').classList.toggle('active');
+            const chatWidget = document.getElementById('chatWidget');
+            const isOpen = chatWidget.classList.toggle('active');
+            document.querySelector('.chat-widget-btn').setAttribute('aria-expanded', String(isOpen));
         }
 
         function sendChatMessage() {
@@ -987,10 +1053,18 @@
             setTimeout(() => {
                 const botMsg = document.createElement('div');
                 botMsg.className = 'chat-msg bot';
-                botMsg.textContent = t.chatReply;
+                botMsg.textContent = getChatReply(text, t);
                 chatBody.appendChild(botMsg);
                 chatBody.scrollTop = chatBody.scrollHeight;
             }, 500);
+        }
+
+        function getChatReply(userText, t) {
+            const lowerText = userText.toLowerCase();
+            const matched = (t.chatReplies || []).find(entry =>
+                entry.keywords.some(kw => lowerText.includes(kw.toLowerCase()))
+            );
+            return matched ? matched.reply : t.chatReply;
         }
     </script>
 </body>
