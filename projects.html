@@ -3,106 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاريع سابقة | استشارات الذكاء الاصطناعي</title>
+    <meta name="description" content="InnoVision - استشارات الذكاء الاصطناعي والتحول الرقمي">
+    <title id="page-title">مشاريع سابقة | InnoVision</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <header>
-        <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-brain"></i>
-                <span id="logo-text">استشارات الذكاء الاصطناعي</span>
+        <div class="container nav-container">
+            <a href="index.html" class="logo" aria-label="InnoVision - الصفحة الرئيسية">
+                <img src="image/logo.png" alt="InnoVision Logo" onerror="this.style.display='none'">
+                <span id="logo-text">InnoVision</span>
             </a>
-
             <ul class="nav-links" id="navLinks">
-                <li><a href="services.html"><i class="fa-solid fa-cogs"></i> <span id="nav-services">الخدمات</span></a></li>
-                <li><a href="projects.html"><i class="fa-solid fa-folder-open"></i> <span id="nav-projects">مشاريع سابقة</span></a></li>
-                <li><a href="testimonials.html"><i class="fa-solid fa-comment"></i> <span id="nav-testimonials">آراء العملاء</span></a></li>
-                <li><a href="about.html"><i class="fa-solid fa-user-tie"></i> <span id="nav-about">عن الاستشاري</span></a></li>
-                <li><a href="contact.html" class="contact-link"><i class="fa-solid fa-phone"></i> <span id="nav-contact">اتصل بنا</span></a></li>
+                <li><a href="services.html" id="nav-services">الخدمات</a></li>
+                <li><a href="projects.html" id="nav-projects">مشاريع سابقة</a></li>
+                <li><a href="testimonials.html" id="nav-testimonials">آراء العملاء</a></li>
+                <li><a href="about.html" id="nav-about">عن الاستشاري</a></li>
+                <li><a href="contact.html" id="nav-contact">اتصل بنا</a></li>
             </ul>
-
             <div class="nav-actions">
-                <button class="lang-btn active" data-lang="ar" id="langAr">عربي</button>
-                <button class="lang-btn" data-lang="en" id="langEn">EN</button>
-                <button class="menu-toggle" id="menuToggle">
+                <button class="btn-icon" id="theme-toggle" aria-label="تبديل الوضع الداكن/المضيء">
+                    <i class="fa-solid fa-moon"></i>
+                    <span id="theme-text">الوضع الداكن</span>
+                </button>
+                <button class="btn-icon" id="lang-toggle" aria-label="Switch language / تبديل اللغة">
+                    <i class="fa-solid fa-globe"></i> <span>English</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
-        </nav>
+        </div>
     </header>
-
-    <main class="page-content">
-        <div class="page-header">
-            <h1 id="projects-title">📂 <span>مشاريع سابقة</span></h1>
-            <p>نماذج من مشاريعنا في مجالات الذكاء الاصطناعي والتعلم الآلي</p>
-        </div>
-
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="icon">🏠</div>
-                <span class="tag" id="proj1-tag">ذكاء اصطناعي وعقارات</span>
-                <h3 id="proj1-title">منصة التنبؤ بأسعار العقارات في قطر</h3>
-                <p id="proj1-desc">نموذج تعلم آلي متقدم للتنبؤ بأسعار العقارات في قطر</p>
-                <a href="#" class="btn-primary" id="proj1-link">عرض المشروع</a>
+    <main class="container">
+                    <h2 class="section-title" id="projects-title">مشاريع سابقة (Case Studies)</h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- تُبنى بواسطة JavaScript من مصفوفة الترجمات -->
             </div>
-
-            <div class="project-card">
-                <div class="icon">📄</div>
-                <span class="tag" id="proj2-tag">معالجة النصوص</span>
-                <h3 id="proj2-title">محسّن السيرة الذاتية ATS</h3>
-                <p id="proj2-desc">تحسين توافق السيرة الذاتية مع متطلبات أنظمة ATS باستخدام TF-IDF</p>
-                <a href="#" class="btn-primary" id="proj2-link">عرض المشروع</a>
-            </div>
-
-            <div class="project-card">
-                <div class="icon">🛂</div>
-                <span class="tag" id="proj3-tag">كشف الشذوذ</span>
-                <h3 id="proj3-title">كشف الاحتيال في الصفقات العمومية</h3>
-                <p id="proj3-desc">نموذج متخصص للكشف عن الأنماط المشبوهة في الصفقات</p>
-                <a href="#" class="btn-primary" id="proj3-link">عرض المشروع</a>
-            </div>
-
-            <div class="project-card">
-                <div class="icon">🩺</div>
-                <span class="tag">التنبؤ الطبي</span>
-                <h3>نموذج التنبؤ بالسكري</h3>
-                <p>تحليل بيانات طبية للتنبؤ المبكر بمرض السكري</p>
-                <a href="#" class="btn-primary">عرض المشروع</a>
-            </div>
-
-            <div class="project-card">
-                <div class="icon">💬</div>
-                <span class="tag">معالجة اللغة الطبيعية</span>
-                <h3>تحليل المشاعر (NLP)</h3>
-                <p>تحليل المشاعر في النصوص العربية والإنجليزية</p>
-                <a href="#" class="btn-primary">عرض المشروع</a>
-            </div>
-
-            <div class="project-card">
-                <div class="icon">📊</div>
-                <span class="tag">التنبؤ المالي</span>
-                <h3>التنبؤ بأسعار العملات الرقمية</h3>
-                <p>نموذج لتوقع أسعار العملات الرقمية باستخدام التعلم العميق</p>
-                <a href="#" class="btn-primary">عرض المشروع</a>
-            </div>
-        </div>
+        
     </main>
 
     <footer>
-        <p id="copyright-txt">© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
+        <div class="container">
+            <p class="copyright" id="copyright-txt">© 2026 InnoVision - جميع الحقوق محفوظة</p>
+        </div>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('open'); });
-        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('open'); }); });
-    </script>
+    <!-- Chat Widget -->
+    <button class="chat-widget-btn" aria-label="فتح المساعد الذكي" aria-expanded="false" aria-controls="chatWidget">
+        <i class="fa-solid fa-robot"></i>
+        <span id="chat-btn-label">أسأل الرد الآلي</span>
+    </button>
+
+    <div class="chat-box" id="chatWidget">
+        <div class="chat-header">
+            <span><i class="fa-solid fa-robot"></i> <span id="chat-header-txt">مساعد ذكي</span></span>
+            <button class="close-chat" aria-label="إغلاق المحادثة">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-msg bot">
+                <span id="chat-welcome">مرحباً! اسألني عن الخبرات أو المشاريع!</span>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="اكتب سؤالك...">
+            <button><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
     <script src="js/translations.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/chatbot.js"></script>
 </body>
 </html>

@@ -3,107 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عن الاستشاري | استشارات الذكاء الاصطناعي</title>
+    <meta name="description" content="InnoVision - استشارات الذكاء الاصطناعي والتحول الرقمي">
+    <title id="page-title">عن الاستشاري | InnoVision</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <header>
-        <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-brain"></i>
-                <span id="logo-text">استشارات الذكاء الاصطناعي</span>
+        <div class="container nav-container">
+            <a href="index.html" class="logo" aria-label="InnoVision - الصفحة الرئيسية">
+                <img src="image/logo.png" alt="InnoVision Logo" onerror="this.style.display='none'">
+                <span id="logo-text">InnoVision</span>
             </a>
-
             <ul class="nav-links" id="navLinks">
-                <li><a href="services.html"><i class="fa-solid fa-cogs"></i> <span id="nav-services">الخدمات</span></a></li>
-                <li><a href="projects.html"><i class="fa-solid fa-folder-open"></i> <span id="nav-projects">مشاريع سابقة</span></a></li>
-                <li><a href="testimonials.html"><i class="fa-solid fa-comment"></i> <span id="nav-testimonials">آراء العملاء</span></a></li>
-                <li><a href="about.html"><i class="fa-solid fa-user-tie"></i> <span id="nav-about">عن الاستشاري</span></a></li>
-                <li><a href="contact.html" class="contact-link"><i class="fa-solid fa-phone"></i> <span id="nav-contact">اتصل بنا</span></a></li>
+                <li><a href="services.html" id="nav-services">الخدمات</a></li>
+                <li><a href="projects.html" id="nav-projects">مشاريع سابقة</a></li>
+                <li><a href="testimonials.html" id="nav-testimonials">آراء العملاء</a></li>
+                <li><a href="about.html" id="nav-about">عن الاستشاري</a></li>
+                <li><a href="contact.html" id="nav-contact">اتصل بنا</a></li>
             </ul>
-
             <div class="nav-actions">
-                <button class="lang-btn active" data-lang="ar" id="langAr">عربي</button>
-                <button class="lang-btn" data-lang="en" id="langEn">EN</button>
-                <button class="menu-toggle" id="menuToggle">
+                <button class="btn-icon" id="theme-toggle" aria-label="تبديل الوضع الداكن/المضيء">
+                    <i class="fa-solid fa-moon"></i>
+                    <span id="theme-text">الوضع الداكن</span>
+                </button>
+                <button class="btn-icon" id="lang-toggle" aria-label="Switch language / تبديل اللغة">
+                    <i class="fa-solid fa-globe"></i> <span>English</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
-        </nav>
+        </div>
     </header>
-
-    <main class="page-content">
-        <div class="page-header">
-            <h1 id="about-heading">👤 <span>عن الاستشاري</span></h1>
-        </div>
-
-        <div class="about-card">
-            <div class="avatar">💼</div>
-            <h2>م. أحمد فال جمال الدين</h2>
-            <p class="subtitle">مهندس دولة | متخصص في الذكاء الاصطناعي والتعلم الآلي</p>
-
-            <p id="about-p">
-                مهندس دولة (BAC+5) ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة
-                في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً
-                في مجال الذكاء الاصطناعي.
-            </p>
-
-            <p>
-                يعمل حالياً في قطر كمشرف إداري ومطور بايثون وذكاء اصطناعي مستقل.
-                مقيم في الدوحة، قطر.
-            </p>
-
-            <ul class="about-list" id="about-list">
-                <li><span class="item-txt">خبرة متقدمة في الذكاء الاصطناعي والتعلم الآلي</span></li>
-                <li><span class="item-txt">تطوير نماذج تنبؤية متكاملة</span></li>
-                <li><span class="item-txt">حلول تقنية مخصصة للمؤسسات</span></li>
-                <li><span class="item-txt">الأنظمة البيومترية والوثائق المؤمنة</span></li>
-                <li><span class="item-txt">شبكات Cisco والأمن السيبراني</span></li>
-            </ul>
-
-            <div class="stats-row">
-                <div class="stat">
-                    <div class="stat-number">13+</div>
-                    <div class="stat-label" id="stat-proj">مشروعاً منشوراً</div>
+    <main class="container">
+                    <div class="about-box">
+                <div>
+                    <h2 id="about-heading">عن الاستشاري</h2>
+                    <p class="about-subtitle">م. أحمد فال جمال الدين</p>
+                    <p class="about-text" id="about-p">مهندس دولة (BAC+5) ومتخصص في تعلم الآلة من موريتانيا. يجمع بين خبرة 25+ سنة في الأنظمة البيومترية والسجل المدني والتحول الرقمي مع 13 مشروعاً منشوراً في مجال الذكاء الاصطناعي.</p>
+                    <p class="about-text" id="about-p2">يعمل حالياً في قطر كمشرف إداري ومطور بايثون وذكاء اصطناعي مستقل. مقيم في الدوحة، قطر.</p>
+                    <ul class="about-list" id="aboutList"></ul>
+                    <div class="about-actions">
+                        <a href="https://github.com/AHMEDVALL70" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fa-brands fa-github"></i> <span id="btn-github">GitHub</span></a>
+                        <a href="https://ahmedvall70.github.io/ahmed-vall-cv/" target="_blank" rel="noopener noreferrer" class="btn-secondary"><i class="fa-solid fa-file-pdf"></i> <span id="btn-cv">تحميل السيرة الذاتية</span></a>
+                    </div>
                 </div>
-                <div class="stat">
-                    <div class="stat-number">25+</div>
-                    <div class="stat-label" id="stat-exp">سنة خبرة</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">مناصب قيادية</div>
+                <div class="stats-container">
+                    <div>
+                        <div class="stat-num">13+</div>
+                        <div class="stat-lbl" id="stat-proj">مشروعاً منشوراً</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">25+</div>
+                        <div class="stat-lbl" id="stat-exp">سنة خبرة</div>
+                    </div>
+                    <div>
+                        <div class="stat-num">8</div>
+                        <div class="stat-lbl" id="stat-lead">مناصب قيادية</div>
+                    </div>
                 </div>
             </div>
-
-            <div class="about-actions">
-                <a href="https://github.com/AHMEDVALL70" target="_blank" class="btn-primary">
-                    <i class="fa-brands fa-github"></i> <span id="btn-github-txt">GitHub</span>
-                </a>
-                <a href="Ahmed-Vall-CV-AR.pdf" download class="btn-secondary" id="btn-cv">
-                    <i class="fa-solid fa-download"></i> <span id="btn-cv-txt">تحميل السيرة الذاتية</span>
-                </a>
-                <a href="contact.html" class="btn-primary" style="background: var(--primary-dark);">
-                    <i class="fa-solid fa-envelope"></i> تواصل معي
-                </a>
-            </div>
-        </div>
+        
     </main>
 
     <footer>
-        <p id="copyright-txt">© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
+        <div class="container">
+            <p class="copyright" id="copyright-txt">© 2026 InnoVision - جميع الحقوق محفوظة</p>
+        </div>
     </footer>
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        menuToggle.addEventListener('click', () => { navLinks.classList.toggle('open'); });
-        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('open'); }); });
-    </script>
+    <!-- Chat Widget -->
+    <button class="chat-widget-btn" aria-label="فتح المساعد الذكي" aria-expanded="false" aria-controls="chatWidget">
+        <i class="fa-solid fa-robot"></i>
+        <span id="chat-btn-label">أسأل الرد الآلي</span>
+    </button>
+
+    <div class="chat-box" id="chatWidget">
+        <div class="chat-header">
+            <span><i class="fa-solid fa-robot"></i> <span id="chat-header-txt">مساعد ذكي</span></span>
+            <button class="close-chat" aria-label="إغلاق المحادثة">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-msg bot">
+                <span id="chat-welcome">مرحباً! اسألني عن الخبرات أو المشاريع!</span>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="اكتب سؤالك...">
+            <button><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
     <script src="js/translations.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/chatbot.js"></script>
 </body>
 </html>

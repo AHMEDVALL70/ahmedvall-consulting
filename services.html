@@ -3,258 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الخدمات | استشارات الذكاء الاصطناعي</title>
+    <meta name="description" content="InnoVision - استشارات الذكاء الاصطناعي والتحول الرقمي">
+    <title id="page-title">الخدمات | InnoVision</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1a56db;
-            --primary-light: #3b82f6;
-            --primary-dark: #1e3a8a;
-            --bg: #f0f4ff;
-            --card: #ffffff;
-            --text: #0f172a;
-            --muted: #64748b;
-            --border: #dbeafe;
-            --shadow: 0 8px 30px rgba(26, 86, 219, 0.12);
-            --radius: 20px;
-            --header-h: 70px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 2px solid var(--border);
-            height: var(--header-h);
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.1rem;
-            font-weight: 900;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo i { font-size: 1.3rem; }
-
-        .back-home {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-        }
-        .back-home:hover {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        /* ===== PAGE CONTENT ===== */
-        .page-content {
-            flex: 1;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 48px 24px 64px;
-            width: 100%;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--text);
-        }
-        .page-header h1 span { color: var(--primary); }
-        .page-header p {
-            color: var(--muted);
-            font-size: 1.1rem;
-            margin-top: 8px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .service-card {
-            background: var(--card);
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
-            transform: translateY(-6px);
-        }
-        .service-card .icon {
-            font-size: 3rem;
-            margin-bottom: 16px;
-        }
-        .service-card h3 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-        .service-card p {
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--card);
-            border-top: 2px solid var(--border);
-            padding: 20px 24px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .page-content { padding: 24px 16px 40px; }
-            .page-header h1 { font-size: 1.8rem; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <header>
-        <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-brain"></i>
-                <span>استشارات الذكاء الاصطناعي</span>
+        <div class="container nav-container">
+            <a href="index.html" class="logo" aria-label="InnoVision - الصفحة الرئيسية">
+                <img src="image/logo.png" alt="InnoVision Logo" onerror="this.style.display='none'">
+                <span id="logo-text">InnoVision</span>
             </a>
-            <a href="index.html" class="back-home">
-                <i class="fa-solid fa-arrow-right"></i> العودة للرئيسية
-            </a>
-        </nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="services.html" id="nav-services">الخدمات</a></li>
+                <li><a href="projects.html" id="nav-projects">مشاريع سابقة</a></li>
+                <li><a href="testimonials.html" id="nav-testimonials">آراء العملاء</a></li>
+                <li><a href="about.html" id="nav-about">عن الاستشاري</a></li>
+                <li><a href="contact.html" id="nav-contact">اتصل بنا</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-icon" id="theme-toggle" aria-label="تبديل الوضع الداكن/المضيء">
+                    <i class="fa-solid fa-moon"></i>
+                    <span id="theme-text">الوضع الداكن</span>
+                </button>
+                <button class="btn-icon" id="lang-toggle" aria-label="Switch language / تبديل اللغة">
+                    <i class="fa-solid fa-globe"></i> <span>English</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="navLinks">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
     </header>
-
-    <main class="page-content">
-        <div class="page-header">
-            <h1>🧠 <span>خدماتنا</span></h1>
-            <p>نقدم مجموعة متكاملة من الخدمات الاستشارية والتقنية</p>
-        </div>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="icon">🔄</div>
-                <h3>استشارات التحول الرقمي</h3>
-                <p>تطوير استراتيجيات تحول رقمي شاملة وتطبيق الحلول المتقدمة</p>
+    <main class="container">
+                    <h2 class="section-title" id="services-title">خدمات الاستشارات</h2>
+            <p class="section-subtitle" id="services-subtitle">مجموعة متكاملة من الخدمات الاستشارية والتقنية</p>
+            <div class="services-grid" id="servicesGrid">
+                <!-- تُبنى بواسطة JavaScript من مصفوفة الترجمات -->
             </div>
-
-            <div class="service-card">
-                <div class="icon">🤖</div>
-                <h3>دراسات الذكاء الاصطناعي</h3>
-                <p>تحليل متخصص وتطبيق نماذج التعلم الآلي</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">👤</div>
-                <h3>الأنظمة البيومترية</h3>
-                <p>تصميم وتكامل أنظمة التعرف على الوجه والسمات البيومترية</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">📊</div>
-                <h3>تحليل البيانات</h3>
-                <p>جمع وتحليل البيانات واستخراج الرؤى لاتخاذ قرارات دقيقة</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">🌐</div>
-                <h3>تصميم مواقع الويب</h3>
-                <p>تصميم وتطوير مواقع ويب احترافية متوافقة مع المعايير</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">💡</div>
-                <h3>الاستشارات التقنية</h3>
-                <p>تقديم استشارات تقنية متخصصة لتحسين البنية التحتية</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">🔍</div>
-                <h3>تحسين محركات البحث (SEO)</h3>
-                <p>تحسين ظهور موقعك في نتائج البحث وزيادة الزوار</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">📄</div>
-                <h3>مراجعة السيرة الذاتية</h3>
-                <p>مراجعة احترافية للسيرة الذاتية لضمان توافقها مع أفضل الممارسات</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">✍️</div>
-                <h3>كتابة السيرة الذاتية</h3>
-                <p>كتابة سيرة ذاتية احترافية تعكس مهاراتك وخبراتك</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">📋</div>
-                <h3>إدارة البرامج</h3>
-                <p>إدارة وتنفيذ البرامج والمشاريع من التخطيط إلى التسليم</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">🏗️</div>
-                <h3>التثمين العقاري</h3>
-                <p>تقدير القيمة السوقية للعقارات باستخدام أساليب علمية</p>
-            </div>
-
-            <div class="service-card">
-                <div class="icon">💰</div>
-                <h3>إعداد التقارير المالية</h3>
-                <p>إعداد تقارير مالية احترافية تعكس أداء المؤسسة</p>
-            </div>
-        </div>
+        
     </main>
 
     <footer>
-        <p>© 2026 م. أحمد فال - جميع الحقوق محفوظة</p>
+        <div class="container">
+            <p class="copyright" id="copyright-txt">© 2026 InnoVision - جميع الحقوق محفوظة</p>
+        </div>
     </footer>
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="close-btn" aria-label="إغلاق النافذة">&times;</button>
+            <h3 id="modal-title" style="margin-bottom: 20px;">حجز جلسة استشارية</h3>
+            <div class="alert-success" id="successAlert">
+                <i class="fa-solid fa-circle-check"></i> <span id="successMsg">تم إرسال طلبك بنجاح!</span>
+            </div>
+            <div class="alert-error" id="errorAlert">
+                <i class="fa-solid fa-circle-exclamation"></i> <span id="errorMsg">حدث خطأ أثناء الإرسال. حاول مرة أخرى.</span>
+            </div>
+            <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label id="lbl-srv">الخدمة المختارة</label>
+                    <input type="text" id="serviceName" readonly>
+                </div>
+                <div class="form-group">
+                    <label id="lbl-name">الاسم الكامل</label>
+                    <input type="text" id="fullName" placeholder="أدخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label id="lbl-email">البريد الإلكتروني</label>
+                    <input type="email" id="email" placeholder="example@domain.com">
+                </div>
+                <div class="form-group">
+                    <label id="lbl-phone">رقم الهاتف</label>
+                    <div class="phone-input-group">
+                        <select id="countryCode">
+                            <option value="+974">🇶🇦 قطر (+974)</option>
+                            <option value="+966">🇸🇦 السعودية (+966)</option>
+                            <option value="+971">🇦🇪 الإمارات (+971)</option>
+                            <option value="+965">🇰🇼 الكويت (+965)</option>
+                            <option value="+968">🇴🇲 عمان (+968)</option>
+                            <option value="+973">🇧🇭 البحرين (+973)</option>
+                            <option value="+20">🇪🇬 مصر (+20)</option>
+                            <option value="+212">🇲🇦 المغرب (+212)</option>
+                            <option value="+213">🇩🇿 الجزائر (+213)</option>
+                            <option value="+216">🇹🇳 تونس (+216)</option>
+                            <option value="+218">🇱🇾 ليبيا (+218)</option>
+                            <option value="+962">🇯🇴 الأردن (+962)</option>
+                            <option value="+970">🇵🇸 فلسطين (+970)</option>
+                            <option value="+961">🇱🇧 لبنان (+961)</option>
+                            <option value="+963">🇸🇾 سوريا (+963)</option>
+                            <option value="+964">🇮🇶 العراق (+964)</option>
+                            <option value="+967">🇾🇪 اليمن (+967)</option>
+                            <option value="+249">🇸🇩 السودان (+249)</option>
+                            <option value="+252">🇸🇴 الصومال (+252)</option>
+                            <option value="+222">🇲🇷 موريتانيا (+222)</option>
+                            <option value="+291">🇪🇷 إريتريا (+291)</option>
+                            <option value="+253">🇩🇯 جيبوتي (+253)</option>
+                            <option value="+269">🇰🇲 جزر القمر (+269)</option>
+                            <option value="+91">🇮🇳 الهند (+91)</option>
+                            <option value="+92">🇵🇰 باكستان (+92)</option>
+                            <option value="+880">🇧🇩 بنجلاديش (+880)</option>
+                            <option value="+977">🇳🇵 نيبال (+977)</option>
+                            <option value="+94">🇱🇰 سريلانكا (+94)</option>
+                            <option value="+86">🇨🇳 الصين (+86)</option>
+                            <option value="+81">🇯🇵 اليابان (+81)</option>
+                            <option value="+82">🇰🇷 كوريا الجنوبية (+82)</option>
+                            <option value="+84">🇻🇳 فيتنام (+84)</option>
+                            <option value="+60">🇲🇾 ماليزيا (+60)</option>
+                            <option value="+65">🇸🇬 سنغافورة (+65)</option>
+                            <option value="+66">🇹🇭 تايلاند (+66)</option>
+                            <option value="+62">🇮🇩 إندونيسيا (+62)</option>
+                            <option value="+63">🇵🇭 الفلبين (+63)</option>
+                            <option value="+855">🇰🇭 كمبوديا (+855)</option>
+                            <option value="+856">🇱🇦 لاوس (+856)</option>
+                            <option value="+95">🇲🇲 ميانمار (+95)</option>
+                            <option value="+90">🇹🇷 تركيا (+90)</option>
+                            <option value="+98">🇮🇷 إيران (+98)</option>
+                            <option value="+93">🇦🇫 أفغانستان (+93)</option>
+                            <option value="+44">🇬🇧 بريطانيا (+44)</option>
+                            <option value="+33">🇫🇷 فرنسا (+33)</option>
+                            <option value="+49">🇩🇪 ألمانيا (+49)</option>
+                            <option value="+39">🇮🇹 إيطاليا (+39)</option>
+                            <option value="+34">🇪🇸 إسبانيا (+34)</option>
+                            <option value="+31">🇳🇱 هولندا (+31)</option>
+                            <option value="+32">🇧🇪 بلجيكا (+32)</option>
+                            <option value="+41">🇨🇭 سويسرا (+41)</option>
+                            <option value="+43">🇦🇹 النمسا (+43)</option>
+                            <option value="+46">🇸🇪 السويد (+46)</option>
+                            <option value="+47">🇳🇴 النرويج (+47)</option>
+                            <option value="+45">🇩🇰 الدنمارك (+45)</option>
+                            <option value="+358">🇫🇮 فنلندا (+358)</option>
+                            <option value="+48">🇵🇱 بولندا (+48)</option>
+                            <option value="+36">🇭🇺 المجر (+36)</option>
+                            <option value="+40">🇷🇴 رومانيا (+40)</option>
+                            <option value="+420">🇨🇿 التشيك (+420)</option>
+                            <option value="+30">🇬🇷 اليونان (+30)</option>
+                            <option value="+372">🇪🇪 إستونيا (+372)</option>
+                            <option value="+371">🇱🇻 لاتفيا (+371)</option>
+                            <option value="+370">🇱🇹 ليتوانيا (+370)</option>
+                            <option value="+1">🇺🇸 الولايات المتحدة (+1)</option>
+                            <option value="+52">🇲🇽 المكسيك (+52)</option>
+                            <option value="+55">🇧🇷 البرازيل (+55)</option>
+                            <option value="+56">🇨🇱 تشيلي (+56)</option>
+                            <option value="+54">🇦🇷 الأرجنتين (+54)</option>
+                            <option value="+51">🇵🇪 بيرو (+51)</option>
+                            <option value="+57">🇨🇴 كولومبيا (+57)</option>
+                            <option value="+58">🇻🇪 فنزويلا (+58)</option>
+                            <option value="+234">🇳🇬 نيجيريا (+234)</option>
+                            <option value="+254">🇰🇪 كينيا (+254)</option>
+                            <option value="+27">🇿🇦 جنوب أفريقيا (+27)</option>
+                            <option value="+256">🇺🇬 أوغندا (+256)</option>
+                            <option value="+255">🇹🇿 تنزانيا (+255)</option>
+                            <option value="+233">🇬🇭 غانا (+233)</option>
+                            <option value="+225">🇨🇮 ساحل العاج (+225)</option>
+                            <option value="+260">🇿🇲 زامبيا (+260)</option>
+                            <option value="+263">🇿🇼 زيمبابوي (+263)</option>
+                            <option value="+61">🇦🇺 أستراليا (+61)</option>
+                            <option value="+64">🇳🇿 نيوزيلندا (+64)</option>
+                        </select>
+                        <input type="tel" id="phone" placeholder="7473 6271">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label id="lbl-message">الرسالة</label>
+                    <textarea id="bookingMessage" placeholder="اكتب تفاصيلك..."></textarea>
+                </div>
+                <button type="submit" class="book-btn" id="btn-submit">
+                    <span id="btn-submit-txt">إرسال الطلب</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Chat Widget -->
+    <button class="chat-widget-btn" aria-label="فتح المساعد الذكي" aria-expanded="false" aria-controls="chatWidget">
+        <i class="fa-solid fa-robot"></i>
+        <span id="chat-btn-label">أسأل الرد الآلي</span>
+    </button>
 
+    <div class="chat-box" id="chatWidget">
+        <div class="chat-header">
+            <span><i class="fa-solid fa-robot"></i> <span id="chat-header-txt">مساعد ذكي</span></span>
+            <button class="close-chat" aria-label="إغلاق المحادثة">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-msg bot">
+                <span id="chat-welcome">مرحباً! اسألني عن الخبرات أو المشاريع!</span>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="اكتب سؤالك...">
+            <button><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <script src="js/translations.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/form-handler.js"></script>
 </body>
 </html>
